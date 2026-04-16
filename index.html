@@ -187,7 +187,7 @@
         </div>
     </div>
 
-    <nav class="absolute top-0 right-0 z-50 flex items-center p-8 md:pr-12 md:pt-10">
+    <nav class="fixed top-0 right-0 z-50 flex items-center p-5 md:p-8 md:pr-12 md:pt-10">
         <a href="#"
             class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-brand-goldHover">
             Bridal Fair
@@ -212,9 +212,9 @@
     ════════════════════════════════════════════ -->
     <section class="relative min-h-screen w-full flex items-center overflow-hidden">
 
-        <!-- ── CENTRE COLUMN ── -->
-        <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 overflow-hidden z-10"
-             style="width: 352px; background: #1a130c;">
+        <!-- ── CENTRE COLUMN — hidden on mobile, responsive width ── -->
+        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 overflow-hidden z-10"
+             style="width: clamp(180px, 25vw, 352px); background: #1a130c;">
             <video autoplay muted loop playsinline
                    class="absolute inset-0 w-full h-full object-cover">
                 <source src="img/video.mp4" type="video/mp4">
@@ -226,30 +226,48 @@
             <div class="absolute top-0 bottom-0 right-0 w-px bg-[#3d2b18]"></div>
         </div>
 
-        <!-- ── LOGO + TEXT: single flex row ── -->
-        <div class="relative w-full flex items-center z-20">
+        <!-- ── MOBILE: stacked layout ── -->
+        <div class="flex md:hidden relative w-full flex-col items-center justify-center z-20 px-6 pt-24 pb-16 gap-10">
+            <img src="img/logo.png" alt="City Club of Tokyo Logo"
+                 class="w-[220px] h-auto object-contain">
+            <div class="text-center">
+                <p class="text-gray-300 text-[11px] tracking-[0.22em] mb-4 flex items-center justify-center">
+                    <span class="w-4 h-[0.5px] bg-gray-400 mr-3"></span>
+                    「東京 銀座」で叶える貸切結婚式場
+                </p>
+                <h2 class="text-white text-xl font-mincho tracking-[0.2em] leading-[2] mb-4">
+                    ここにしかない 秘密の場所<br>今 時が動きだす
+                </h2>
+                <p class="text-gray-400 text-[10px] uppercase tracking-[0.18em] leading-loose">
+                    A Secret Place Like No Other<br>Tokyo ginza private wedding
+                </p>
+            </div>
+        </div>
+
+        <!-- ── DESKTOP: flex row (md and up) ── -->
+        <div class="hidden md:flex relative w-full items-center z-20">
 
             <!-- Left pane: logo -->
             <div class="flex-1 flex items-center justify-center pr-6 md:pr-10" id="hero-logo">
                 <img src="img/logo.png" alt="City Club of Tokyo Logo"
-                     class="w-[300px] md:w-[408px] lg:w-[490px] h-auto object-contain">
+                     class="w-[220px] md:w-[340px] lg:w-[490px] h-auto object-contain">
             </div>
 
-            <!-- Centre spacer — same width as column -->
-            <div class="flex-shrink-0" style="width: 352px;"></div>
+            <!-- Centre spacer — matches column width -->
+            <div class="flex-shrink-0" style="width: clamp(180px, 25vw, 352px);"></div>
 
             <!-- Right pane: text -->
             <div class="flex-1 flex items-center justify-center pl-6 md:pl-10" id="hero-text">
-                <div class="max-w-[360px] md:max-w-lg">
-                    <p class="text-gray-300 text-[13px] md:text-sm tracking-[0.22em] mb-5 flex items-center">
+                <div class="max-w-[280px] md:max-w-[360px] lg:max-w-lg">
+                    <p class="text-gray-300 text-[11px] md:text-[13px] tracking-[0.22em] mb-5 flex items-center">
                         <span class="w-4 h-[0.5px] bg-gray-400 mr-3"></span>
                         「東京 銀座」で叶える貸切結婚式場
                     </p>
-                    <h2 class="text-white text-2xl md:text-3xl lg:text-4xl font-mincho tracking-[0.25em] leading-[2] mb-6">
+                    <h2 class="text-white text-lg md:text-2xl lg:text-4xl font-mincho tracking-[0.25em] leading-[2] mb-6">
                         ここにしかない 秘密の場所<br>
                         今 時が動きだす
                     </h2>
-                    <p class="text-gray-400 text-xs md:text-sm uppercase tracking-[0.22em] leading-loose">
+                    <p class="text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.22em] leading-loose">
                         A Secret Place Like No Other Time Begins to Flow<br>
                         Tokyo ginza private wedding
                     </p>
