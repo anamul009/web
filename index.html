@@ -104,11 +104,89 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Menu Overlay Transition */
+        #menu-overlay {
+            clip-path: circle(0% at 100% 0%);
+            transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        #menu-overlay.open {
+            clip-path: circle(150% at 100% 0%);
+        }
     </style>
 </head>
 
 <body class="bg-brand-dark text-white font-serif bg-marble antialiased min-h-screen relative overflow-x-hidden">
-    
+
+    <!-- Full-screen Menu Overlay -->
+    <div id="menu-overlay" class="fixed inset-0 bg-[#f4f2ea] z-[90] flex flex-col lg:flex-row overflow-hidden">
+
+        <!-- Close button -->
+        <button id="menu-close-btn" class="absolute top-8 right-8 md:right-12 z-[110] flex flex-col items-center justify-center w-10 h-10 group">
+            <span class="block w-6 h-[1px] bg-[#1a1a1a] rotate-45 translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
+            <span class="block w-6 h-[1px] bg-[#1a1a1a] -rotate-45 -translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
+        </button>
+
+        <!-- Left Pane: Image (Hidden on mobile) -->
+        <div class="hidden lg:block lg:w-1/2 h-full relative overflow-hidden">
+            <img src="img/yata.png" alt="Menu Decoration" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center">
+                    <img src="img/logo.png" alt="Logo" class="w-48 h-auto mb-8 mx-auto brightness-0 invert opacity-80">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Pane: Links -->
+        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center px-8 md:px-24 py-32 overflow-y-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-2xl">
+                <div class="space-y-4">
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">トップページ</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">ブライダルフェア</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">挙式会場</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">パーティ会場</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+                <div class="space-y-4">
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">料理＆ワイン</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">ウエディングプラン</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">アクセス</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4 text-[#8c734b]">
+                        <span class="text-sm tracking-widest font-serif font-bold">見学予約</span>
+                        <span class="w-6 h-6 rounded-full border border-[#8c734b] flex items-center justify-center text-[10px] group-hover:bg-[#8c734b] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-16 flex flex-wrap gap-x-8 gap-y-4">
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">資料請求</a>
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">お問い合わせ</a>
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">よくあるご質問</a>
+            </div>
+        </div>
+    </div>
+
     <nav class="absolute top-0 right-0 z-50 flex items-center p-8 md:pr-12 md:pt-10">
         <a href="#"
             class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-brand-goldHover">
@@ -914,19 +992,22 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const menuBtn = document.getElementById("mobile-menu-btn");
+            const menuOverlay = document.getElementById("menu-overlay");
+            const menuCloseBtn = document.getElementById("menu-close-btn");
 
-            // Toggle menu animation
+            function closeMenu() {
+                menuBtn.classList.remove("active");
+                menuOverlay.classList.remove("open");
+                document.body.style.overflow = "";
+            }
+
             menuBtn.addEventListener("click", () => {
                 menuBtn.classList.toggle("active");
-
-                // Logic for full-screen menu overlay can go here later
-                const isMenuOpen = menuBtn.classList.contains("active");
-                if (isMenuOpen) {
-                    console.log("Menu opened");
-                } else {
-                    console.log("Menu closed");
-                }
+                menuOverlay.classList.toggle("open");
+                document.body.style.overflow = menuOverlay.classList.contains("open") ? "hidden" : "";
             });
+
+            menuCloseBtn.addEventListener("click", closeMenu);
         });
 
         // Reveal on scroll
