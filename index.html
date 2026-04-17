@@ -212,6 +212,18 @@
     ════════════════════════════════════════════ -->
     <section class="relative min-h-screen w-full flex items-center overflow-hidden">
 
+        <!-- ── LEFT vertical pattern strip ── -->
+        <div class="hidden md:block absolute left-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden" style="width: 256px;">
+            <div class="absolute inset-0"
+                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
+        </div>
+
+        <!-- ── RIGHT vertical pattern strip ── -->
+        <div class="hidden md:block absolute right-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden" style="width: 256px;">
+            <div class="absolute inset-0"
+                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
+        </div>
+
         <!-- ── CENTRE COLUMN — hidden on mobile, responsive width ── -->
         <div class="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 overflow-hidden z-10"
              style="width: clamp(180px, 25vw, 352px); background: #1a130c;">
@@ -219,9 +231,8 @@
                    class="absolute inset-0 w-full h-full object-cover">
                 <source src="img/video.mp4" type="video/mp4">
             </video>
-            <img src="img/pattern-05.png"
-                 class="absolute inset-0 w-full h-full pointer-events-none"
-                 style="object-fit: fill; mix-blend-mode: multiply; opacity: 0.6;">
+            <div class="absolute inset-0 pointer-events-none"
+                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: 100% auto; mix-blend-mode: multiply; opacity: 0.6;"></div>
             <div class="absolute top-0 bottom-0 left-0 w-px bg-[#3d2b18]"></div>
             <div class="absolute top-0 bottom-0 right-0 w-px bg-[#3d2b18]"></div>
         </div>
@@ -316,6 +327,25 @@
     ════════════════════════════════════════════ -->
     <section class="relative min-h-screen w-full flex flex-col justify-center py-24 px-8 md:px-24 z-10 overflow-hidden bg-transparent">
 
+        <!-- Pattern bridge: connects hero column bottom → horizontal band across concept top -->
+        <div class="absolute top-0 left-0 w-full z-0 pointer-events-none overflow-hidden"
+             style="height: clamp(120px, 16vw, 200px); background: #1a130c;">
+            <!-- Video base layer (same source as hero) -->
+            <video autoplay muted loop playsinline
+                   class="absolute inset-0 w-full h-full object-cover">
+                <source src="img/video.mp4" type="video/mp4">
+            </video>
+            <!-- Pattern overlay with multiply blend — tiled to preserve aspect ratio -->
+            <div class="absolute inset-0 pointer-events-none"
+                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.6;"></div>
+            <!-- Left + right edge fades so strip blends into dark marble bg -->
+            <div class="absolute inset-0"
+                 style="background: linear-gradient(to right, #0d0d0d 0%, transparent 22%, transparent 78%, #0d0d0d 100%);"></div>
+            <!-- Bottom fade into concept section -->
+            <div class="absolute inset-0"
+                 style="background: linear-gradient(to bottom, transparent 40%, rgba(13,13,13,0.95) 100%);"></div>
+        </div>
+
         <!-- SVG decorative bg -->
         <div class="absolute top-0 right-0 w-full md:w-2/3 h-64 z-[-1] opacity-60 pointer-events-none">
             <svg width="100%" height="100%" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">
@@ -372,7 +402,11 @@
                 </pattern>
                 <rect width="100%" height="100%" fill="url(#light-geo)" />
             </svg>
+            <!-- pattern-05 tiled inside same space, cream tone via multiply -->
+            <div class="absolute inset-0"
+                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
         </div>
+
 
         <div class="relative max-w-7xl mx-auto z-10">
             
@@ -470,66 +504,58 @@
         </div>
     </section>
 
-    <section class="relative w-full bg-[#f8f7f3] pt-0 pb-32 z-20 overflow-hidden">
-        
-        <div class="absolute top-0 left-0 w-full h-64 md:h-96 z-0 bg-[url('/img/your-pattern.png')] bg-repeat-x bg-contain bg-top opacity-90"></div>
+    <section class="relative w-full bg-[#f8f7f3] z-20 overflow-hidden">
 
-        <div class="relative max-w-7xl mx-auto w-full flex flex-col items-center mt-16 md:mt-32 px-8 z-10">
-            
-            <div class="relative w-full max-w-[280px] md:max-w-[380px] lg:max-w-[420px] h-[400px] md:h-[550px] z-10">
-                <img 
-                    src="/img/yata.jpg" 
-                    alt="Couple in front of dark marble" 
-                    class="w-full h-full object-cover shadow-2xl"
-                >
+        <!-- Upper block: pattern strip + title + couple photo -->
+        <div class="relative w-full" style="height: clamp(380px, 60vw, 660px);">
 
-            <h2 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#b79769] text-4xl md:text-6xl lg:text-[5.5rem] font-serif tracking-[0.15em] whitespace-nowrap z-30 pointer-events-none drop-shadow-md">
+            <!-- pattern-05 top area — same treatment as wedding space -->
+            <div class="absolute top-0 left-0 w-full pointer-events-none z-0" style="height: 55%;">
+                <div class="absolute inset-0"
+                     style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
+            </div>
+
+            <!-- Dark title — behind photo, shows on cream/pattern areas -->
+            <div class="absolute w-full px-4 md:px-10 z-[5]" style="top: 48%;">
+                <h2 class="font-serif leading-none tracking-[0.03em] text-[#1a1a1a]"
+                    style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
                     RECOMMEND BRIDAL FAIR
                 </h2>
             </div>
 
-            <div class="hidden lg:block absolute w-full top-[65%] left-0 px-8 xl:px-16 pointer-events-none">
-                <div class="relative w-full flex justify-between items-center max-w-7xl mx-auto">
-                    
-                    <div class="pointer-events-auto pl-8">
-                        <p class="text-[#333333] text-sm tracking-[0.2em] leading-[2.5] font-light">
-                            結婚式を考え出したら<br>
-                            まずはブライダルフェアに<br>
-                            ご参加ください。
-                        </p>
-                    </div>
-
-                    <div class="pointer-events-auto pr-8 flex items-center">
-                        <a href="#" class="bg-[#8c734b] text-white text-xs tracking-widest px-8 py-5 transition hover:bg-[#7a6440]">
-                            おすすめのブライダルフェア
-                        </a>
-                        <div class="flex items-center">
-                            <div class="w-6 h-[1px] bg-[#8c734b]"></div>
-                            <div class="w-1 h-1 rounded-full bg-[#8c734b]"></div>
-                        </div>
-                    </div>
-
-                </div>
+            <!-- White title — clipped to image width only, in front of photo -->
+            <div class="absolute w-full px-4 md:px-10 z-20" style="top: 48%; clip-path: inset(0 calc(50% - clamp(113.5px, 15.75vw, 227px)) 0 calc(50% - clamp(113.5px, 15.75vw, 227px)));">
+                <h2 class="font-serif leading-none tracking-[0.03em] text-white"
+                    style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
+                    RECOMMEND BRIDAL FAIR
+                </h2>
             </div>
 
-            <div class="flex flex-col lg:hidden w-full items-center text-center mt-16 space-y-8 z-20">
-                <p class="text-[#333333] text-sm tracking-[0.2em] leading-[2.5] font-light">
-                    結婚式を考え出したら<br>
-                    まずはブライダルフェアに<br>
-                    ご参加ください。
-                </p>
-                <div class="flex items-center">
-                    <a href="#" class="bg-[#8c734b] text-white text-[10px] tracking-widest px-6 py-4 transition hover:bg-[#7a6440]">
-                        おすすめのブライダルフェア
-                    </a>
-                    <div class="flex items-center">
-                        <div class="w-4 h-[1px] bg-[#8c734b]"></div>
-                        <div class="w-1 h-1 rounded-full bg-[#8c734b]"></div>
-                    </div>
-                </div>
+            <!-- Couple photo — centered, fixed aspect ratio, on top -->
+            <div class="absolute top-[20%] left-1/2 -translate-x-1/2 z-10 shadow-2xl overflow-hidden"
+                 style="width: clamp(227px, 31.5vw, 454px); height: clamp(313px, 42vw, 617px);">
+                <img src="/img/yata.jpg" alt="Couple" class="w-full h-full object-cover object-center">
             </div>
-
         </div>
+
+        <!-- Bottom content: JP text left, CTA right -->
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center px-8 md:px-16 lg:px-24 pt-16 pb-24">
+            <p class="text-[#333333] text-sm tracking-[0.2em] leading-[2.8] font-light">
+                結婚式を考え出したら<br>
+                まずはブライダルフェアに<br>
+                ご参加ください。
+            </p>
+            <div class="flex items-center mt-8 lg:mt-0">
+                <a href="#" class="bg-[#8c734b] text-white text-[11px] tracking-widest px-8 py-5 transition hover:bg-[#7a6440]">
+                    おすすめのブライダルフェア
+                </a>
+                <div class="flex items-center">
+                    <div class="w-6 h-[1px] bg-[#8c734b]"></div>
+                    <div class="w-1 h-1 rounded-full bg-[#8c734b]"></div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section class="relative w-full z-20 flex flex-col">
@@ -1027,6 +1053,18 @@
 
             menuCloseBtn.addEventListener("click", closeMenu);
         });
+
+        // Sync both videos to play at the same time
+        const videos = document.querySelectorAll('video');
+        if (videos.length >= 2) {
+            const primary = videos[0];
+            const secondary = videos[1];
+            primary.addEventListener('timeupdate', () => {
+                if (Math.abs(secondary.currentTime - primary.currentTime) > 0.1) {
+                    secondary.currentTime = primary.currentTime;
+                }
+            });
+        }
 
         // Reveal on scroll
         const revealEls = document.querySelectorAll('.reveal');
