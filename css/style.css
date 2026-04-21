@@ -127,7 +127,7 @@ body { overflow-x: hidden; color: #e0e0e0; }
 .floor-hero-bg {
     position: fixed;
     inset: 0;
-    background-image: url('../img/1 (1).jpg');
+    background-image: url('../img/1%20(1).jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.22;
@@ -155,7 +155,7 @@ body { overflow-x: hidden; color: #e0e0e0; }
 .piano-bg {
     position: fixed;
     inset: 0;
-    background-image: url('../img/1 (2).jpg');
+    background-image: url('../img/1%20(2).jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.18;
