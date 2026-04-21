@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap"
         rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -89,20 +90,61 @@
 
         /* Animated arc for scroll indicator */
         @keyframes arcDraw {
-            0%   { stroke-dashoffset: 163; }
-            60%  { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: -163; }
+            0% {
+                stroke-dashoffset: 163;
+            }
+
+            60% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: -163;
+            }
         }
 
         /* Reveal on scroll */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
-            transition: opacity 1s ease, transform 1s ease;
+            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
+
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Advanced Rich Reveals */
+        .reveal-clip {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .reveal-clip.visible {
+            clip-path: inset(0 0 0 0);
+        }
+
+        .reveal-scale-img {
+            transform: scale(1.15);
+            transition: transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .visible .reveal-scale-img,
+        .visible.reveal-scale-img {
+            transform: scale(1);
+        }
+
+        .reveal-delay-200 {
+            transition-delay: 200ms !important;
+        }
+
+        .reveal-delay-400 {
+            transition-delay: 400ms !important;
+        }
+
+        .reveal-delay-600 {
+            transition-delay: 600ms !important;
         }
 
         /* Menu Overlay Transition */
@@ -110,6 +152,7 @@
             clip-path: circle(0% at 100% 0%);
             transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
+
         #menu-overlay.open {
             clip-path: circle(150% at 100% 0%);
         }
@@ -118,22 +161,28 @@
 
 <body class="bg-brand-dark text-white font-serif bg-marble antialiased min-h-screen relative overflow-x-hidden">
 
+    <!-- Custom Cursor -->
+    <div id="cursor" class="fixed w-3 h-3 bg-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block" style="pointer-events: none;"></div>
+    <div id="cursor-follower" class="fixed w-10 h-10 border border-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block" style="pointer-events: none;"></div>
+
     <!-- Full-screen Menu Overlay -->
     <div id="menu-overlay" class="fixed inset-0 bg-[#f4f2ea] z-[90] flex flex-col lg:flex-row overflow-hidden">
 
         <!-- Close button -->
-        <button id="menu-close-btn" class="absolute top-8 right-8 md:right-12 z-[110] flex flex-col items-center justify-center w-10 h-10 group">
-            <span class="block w-6 h-[1px] bg-[#1a1a1a] rotate-45 translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
-            <span class="block w-6 h-[1px] bg-[#1a1a1a] -rotate-45 -translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
+        <button id="menu-close-btn"
+            class="absolute top-8 right-8 md:right-12 z-[110] flex flex-col items-center justify-center w-10 h-10 group">
+            <span
+                class="block w-6 h-[1px] bg-[#1a1a1a] rotate-45 translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
+            <span
+                class="block w-6 h-[1px] bg-[#1a1a1a] -rotate-45 -translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
         </button>
 
         <!-- Left Pane: Image (Hidden on mobile) -->
         <div class="hidden lg:block lg:w-1/2 h-full relative overflow-hidden">
-            <img src="img/yata.png" alt="Menu Decoration" class="w-full h-full object-cover">
+            <img src="img/1%20(3).jpg" alt="Menu Decoration" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/20"></div>
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center">
-                    <img src="img/logo.png" alt="Logo" class="w-48 h-auto mb-8 mx-auto brightness-0 invert opacity-80">
                 </div>
             </div>
         </div>
@@ -142,47 +191,59 @@
         <div class="w-full lg:w-1/2 h-full flex flex-col justify-center px-8 md:px-24 py-32 overflow-y-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-2xl">
                 <div class="space-y-4">
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">トップページ</span>
-                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    <a href="index.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Home</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">ブライダルフェア</span>
-                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    <a href="pages/concept.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Concept</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">挙式会場</span>
-                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    <a href="pages/floor.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Floor</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">パーティ会場</span>
-                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    <a href="pages/menu.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Menu</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
                 </div>
                 <div class="space-y-4">
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">料理＆ワイン</span>
-                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    <a href="pages/performer.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Performer</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="pages/notice.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Notice</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
                     <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">ウエディングプラン</span>
-                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">EC</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif">アクセス</span>
-                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
-                    </a>
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4 text-[#8c734b]">
-                        <span class="text-sm tracking-widest font-serif font-bold">見学予約</span>
-                        <span class="w-6 h-6 rounded-full border border-[#8c734b] flex items-center justify-center text-[10px] group-hover:bg-[#8c734b] group-hover:text-white transition-colors">→</span>
+                    <a href="pages/contact.html"
+                        class="group flex items-center justify-between border-b border-gray-300 pb-4 text-[#8c734b]">
+                        <span class="text-sm tracking-widest font-serif font-bold uppercase">Contact</span>
+                        <span
+                            class="w-6 h-6 rounded-full border border-[#8c734b] flex items-center justify-center text-[10px] group-hover:bg-[#8c734b] group-hover:text-white transition-colors">→</span>
                     </a>
                 </div>
             </div>
 
             <div class="mt-16 flex flex-wrap gap-x-8 gap-y-4">
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">資料請求</a>
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">お問い合わせ</a>
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">よくあるご質問</a>
+                <a href="#"
+                    class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">資料請求</a>
+                <a href="#"
+                    class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">お問い合わせ</a>
+                <a href="#"
+                    class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">よくあるご質問</a>
             </div>
         </div>
     </div>
@@ -190,7 +251,7 @@
     <nav class="fixed top-0 right-0 z-50 flex items-center p-5 md:p-8 md:pr-12 md:pt-10">
         <a href="#"
             class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-brand-goldHover">
-            Bridal Fair
+            Order Now
         </a>
 
         <div class="flex items-center ml-2">
@@ -213,34 +274,35 @@
     <section class="relative min-h-screen w-full flex items-center overflow-hidden">
 
         <!-- ── LEFT vertical pattern strip ── -->
-        <div class="hidden md:block absolute left-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden" style="width: 256px;">
+        <div class="hidden md:block absolute left-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden"
+            style="width: 256px;">
             <div class="absolute inset-0"
-                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
+                style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;">
+            </div>
         </div>
 
         <!-- ── RIGHT vertical pattern strip ── -->
-        <div class="hidden md:block absolute right-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden" style="width: 256px;">
+        <div class="hidden md:block absolute right-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden"
+            style="width: 256px;">
             <div class="absolute inset-0"
-                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
+                style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;">
+            </div>
         </div>
 
-        <!-- ── CENTRE COLUMN — hidden on mobile, responsive width ── -->
-        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 overflow-hidden z-10"
-             style="width: clamp(180px, 25vw, 352px); background: #1a130c;">
-            <video autoplay muted loop playsinline
-                   class="absolute inset-0 w-full h-full object-cover">
+        <!-- ── CENTRE COLUMN — responsive width for all devices ── -->
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 overflow-hidden z-10"
+            style="width: clamp(180px, 40vw, 352px); background: #1a130c; -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
                 <source src="img/video.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 pointer-events-none"
-                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: 100% auto; mix-blend-mode: multiply; opacity: 0.6;"></div>
-            <div class="absolute top-0 bottom-0 left-0 w-px bg-[#3d2b18]"></div>
-            <div class="absolute top-0 bottom-0 right-0 w-px bg-[#3d2b18]"></div>
+                style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: 100% auto; mix-blend-mode: multiply; opacity: 0.6;">
+            </div>
         </div>
 
         <!-- ── MOBILE: stacked layout ── -->
         <div class="flex md:hidden relative w-full flex-col items-center justify-center z-20 px-6 pt-24 pb-16 gap-10">
-            <img src="img/logo.png" alt="City Club of Tokyo Logo"
-                 class="w-[220px] h-auto object-contain">
+            <img src="img/logo.png" alt="City Club of Tokyo Logo" class="w-[220px] h-auto object-contain">
             <div class="text-center">
                 <p class="text-gray-300 text-[11px] tracking-[0.22em] mb-4 flex items-center justify-center">
                     <span class="w-4 h-[0.5px] bg-gray-400 mr-3"></span>
@@ -261,7 +323,7 @@
             <!-- Left pane: logo -->
             <div class="flex-1 flex items-center justify-center pr-6 md:pr-10" id="hero-logo">
                 <img src="img/logo.png" alt="City Club of Tokyo Logo"
-                     class="w-[220px] md:w-[340px] lg:w-[490px] h-auto object-contain">
+                    class="w-[220px] md:w-[340px] lg:w-[490px] h-auto object-contain">
             </div>
 
             <!-- Centre spacer — matches column width -->
@@ -274,7 +336,8 @@
                         <span class="w-4 h-[0.5px] bg-gray-400 mr-3"></span>
                         「東京 銀座」で叶える貸切結婚式場
                     </p>
-                    <h2 class="text-white text-lg md:text-2xl lg:text-4xl font-mincho tracking-[0.25em] leading-[2] mb-6">
+                    <h2
+                        class="text-white text-lg md:text-2xl lg:text-4xl font-mincho tracking-[0.25em] leading-[2] mb-6">
                         ここにしかない 秘密の場所<br>
                         今 時が動きだす
                     </h2>
@@ -302,20 +365,16 @@
         <div class="absolute bottom-8 right-8 z-20 flex items-center gap-3">
             <span class="text-white/50 text-[9px] tracking-[0.35em] uppercase writing-vertical-rl">Scroll Down</span>
             <div class="relative w-14 h-14 flex-shrink-0">
-                <svg class="w-full h-full" style="transform: rotate(-90deg);"
-                     viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="28" cy="28" r="26"
-                            stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-                    <circle cx="28" cy="28" r="26"
-                            stroke="#b79769" stroke-width="0.8"
-                            stroke-dasharray="163" stroke-dashoffset="163"
-                            style="animation: arcDraw 2.4s ease-in-out infinite;"/>
+                <svg class="w-full h-full" style="transform: rotate(-90deg);" viewBox="0 0 56 56" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="28" cy="28" r="26" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" />
+                    <circle cx="28" cy="28" r="26" stroke="#b79769" stroke-width="0.8" stroke-dasharray="163"
+                        stroke-dashoffset="163" style="animation: arcDraw 2.4s ease-in-out infinite;" />
                 </svg>
-                <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4"
-                     viewBox="0 0 16 16" fill="none">
-                    <path d="M8 2v10M3 8l5 5 5-5"
-                          stroke="rgba(255,255,255,0.55)" stroke-width="0.9"
-                          stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4" viewBox="0 0 16 16"
+                    fill="none">
+                    <path d="M8 2v10M3 8l5 5 5-5" stroke="rgba(255,255,255,0.55)" stroke-width="0.9"
+                        stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
         </div>
@@ -325,51 +384,46 @@
     <!-- ═══════════════════════════════════════════
          CONCEPT
     ════════════════════════════════════════════ -->
-    <section class="relative min-h-screen w-full flex flex-col justify-center py-24 px-8 md:px-24 z-10 overflow-hidden bg-transparent">
+    <section
+        class="relative min-h-screen w-full flex flex-col justify-center py-24 px-8 md:px-24 z-10 overflow-hidden bg-transparent">
 
-        <!-- Pattern bridge: connects hero column bottom → horizontal band across concept top -->
-        <div class="absolute top-0 left-0 w-full z-0 pointer-events-none overflow-hidden"
-             style="height: clamp(120px, 16vw, 200px); background: #1a130c;">
-            <!-- Video base layer (same source as hero) -->
-            <video autoplay muted loop playsinline
-                   class="absolute inset-0 w-full h-full object-cover">
+        <!-- Full-screen Concept Background (Video + Pattern) -->
+        <div class="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden"
+            style="background: #1a130c;">
+            <!-- Video base layer -->
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
                 <source src="img/video.mp4" type="video/mp4">
             </video>
-            <!-- Pattern overlay with multiply blend — tiled to preserve aspect ratio -->
-            <div class="absolute inset-0 pointer-events-none"
-                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.6;"></div>
-            <!-- Left + right edge fades so strip blends into dark marble bg -->
-            <div class="absolute inset-0"
-                 style="background: linear-gradient(to right, #0d0d0d 0%, transparent 22%, transparent 78%, #0d0d0d 100%);"></div>
-            <!-- Bottom fade into concept section -->
-            <div class="absolute inset-0"
-                 style="background: linear-gradient(to bottom, transparent 40%, rgba(13,13,13,0.95) 100%);"></div>
-        </div>
+            <!-- Pattern overlay with multiply blend — top 50% only -->
+            <div class="absolute top-0 left-0 right-0 h-[50%] pointer-events-none"
+                style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: clamp(180px, 25vw, 352px) auto; mix-blend-mode: multiply; opacity: 0.65; -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); mask-image: linear-gradient(to bottom, black 70%, transparent 100%);">
+            </div>
 
-        <!-- SVG decorative bg -->
-        <div class="absolute top-0 right-0 w-full md:w-2/3 h-64 z-[-1] opacity-60 pointer-events-none">
-            <svg width="100%" height="100%" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">
-                <pattern id="concept-geo" width="150" height="150" patternUnits="userSpaceOnUse">
-                    <polygon points="150,0 0,150 150,150" fill="#0a0a0a" opacity="0.9"/>
-                    <circle cx="75" cy="75" r="75" fill="transparent"/>
-                </pattern>
-                <rect width="100%" height="100%" fill="url(#concept-geo)"/>
-            </svg>
+            <!-- Overall dark overlay to improve text contrast -->
+            <div class="absolute inset-0 bg-black/40"></div>
+
+            <!-- Bottom and top fade so it blends gracefully with bordering sections -->
+            <div class="absolute inset-0"
+                style="background: linear-gradient(to bottom, #0d0d0d 0%, transparent 15%, transparent 60%, #0d0d0d 100%);">
+            </div>
         </div>
 
         <div class="flex w-full max-w-7xl mx-auto relative z-10 mt-16 md:mt-24 reveal">
             <!-- Vertical label -->
             <div class="flex flex-col items-center mr-8 md:mr-16 shrink-0 pt-8">
-                <span class="text-white text-[10px] tracking-[0.3em] uppercase writing-vertical-rl mb-6">Our Concept</span>
+                <span class="text-white text-[10px] tracking-[0.3em] uppercase writing-vertical-rl mb-6">Our
+                    Concept</span>
                 <div class="w-[0.5px] h-32 md:h-48 bg-gray-600"></div>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-24">
-                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-mincho leading-[1.9] tracking-[0.18em] shrink-0">
+                <h2
+                    class="text-white text-3xl md:text-4xl lg:text-5xl font-mincho leading-[1.9] tracking-[0.18em] shrink-0">
                     至極の空間で<br>誰もがよろこぶ<br>大人のおもてなしを。
                 </h2>
 
-                <div class="text-gray-300 text-xs md:text-sm leading-[2.8] tracking-[0.1em] font-light max-w-2xl lg:mt-4">
+                <div
+                    class="text-gray-300 text-xs md:text-sm leading-[2.8] tracking-[0.1em] font-light max-w-2xl lg:mt-4">
                     <p class="mb-8">
                         銀座駅徒歩3分、好アクセスとこだわりぬいた料理で叶える<br>
                         最高級のおもてなし
@@ -392,39 +446,42 @@
     </section>
 
     <section class="relative w-full bg-[#f8f7f3] pt-32 pb-32 px-8 md:px-24 z-20 overflow-hidden">
-        
+
         <div class="absolute top-0 left-0 w-full h-64 z-0 opacity-40 pointer-events-none">
             <svg width="100%" height="100%" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg">
                 <pattern id="light-geo" width="200" height="200" patternUnits="userSpaceOnUse">
                     <path d="M0,0 Q100,0 100,100 Q0,100 0,0 Z" fill="#eceadd" />
-                    <circle cx="200" cy="100" r="100" fill="transparent" stroke="#eceadd" stroke-width="2"/>
+                    <circle cx="200" cy="100" r="100" fill="transparent" stroke="#eceadd" stroke-width="2" />
                     <rect x="100" y="0" width="100" height="100" fill="#f0efe9" opacity="0.5" />
                 </pattern>
                 <rect width="100%" height="100%" fill="url(#light-geo)" />
             </svg>
             <!-- pattern-05 tiled inside same space, cream tone via multiply -->
             <div class="absolute inset-0"
-                 style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
+                style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: clamp(180px, 25vw, 352px) auto; mix-blend-mode: multiply; opacity: 0.3;">
+            </div>
         </div>
 
 
         <div class="relative max-w-7xl mx-auto z-10">
-            
-            <div class="mb-20 md:mb-32">
+
+            <div class="mb-20 md:mb-32 reveal">
                 <h2 class="text-[#1a1a1a] text-5xl md:text-6xl lg:text-7xl font-serif tracking-[0.15em] mb-6">
                     WEDDING SPACE
                 </h2>
                 <p class="text-brand-gold text-[10px] md:text-xs tracking-[0.15em] leading-relaxed max-w-lg">
-                    This special space, which only a limited number of members are allowed to<br class="hidden md:block">
+                    This special space, which only a limited number of members are allowed to<br
+                        class="hidden md:block">
                     enter, can be used as a wedding stage.
                 </p>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch">
-                
-                <div class="flex w-full lg:w-1/3 shrink-0">
+
+                <div class="flex w-full lg:w-1/3 shrink-0 reveal reveal-delay-200">
                     <div class="flex flex-col items-center mr-8 md:mr-12 shrink-0">
-                        <span class="text-[#1a1a1a] text-[10px] tracking-[0.2em] font-serif writing-vertical-rl rotate-180 mb-6">
+                        <span
+                            class="text-[#1a1a1a] text-[10px] tracking-[0.2em] font-serif writing-vertical-rl rotate-180 mb-6">
                             Ceremony Space
                         </span>
                         <div class="w-[1px] h-full min-h-[150px] bg-gray-300"></div>
@@ -432,39 +489,39 @@
 
                     <div class="flex flex-col justify-center pt-8 md:pt-16">
                         <span class="text-gray-500 text-[10px] md:text-xs tracking-widest mb-6 block">挙式会場</span>
-                        
+
                         <h3 class="text-[#1a1a1a] text-xl md:text-2xl font-serif leading-[1.8] tracking-[0.15em] mb-8">
                             シンプル×ミニマルに<br>
                             あつらえたチャペル
                         </h3>
-                        
+
                         <p class="text-gray-600 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-12 max-w-sm">
                             華美すぎる装飾はあえて引き算し、抜け感<br>
                             のある洗練された空間を演出。宗教色がな<br>
                             いデザインのため和装人前式も案内可能。
                         </p>
 
-                        <a href="#" class="group inline-flex items-center border-b border-[#1a1a1a] pb-2 w-max text-[#1a1a1a] text-[10px] md:text-xs tracking-[0.2em] uppercase transition-opacity hover:opacity-70">
-                            VIEW MORE 
-                            <span class="w-1 h-1 bg-[#1a1a1a] rounded-full ml-4 group-hover:scale-150 transition-transform"></span>
+                        <a href="#"
+                            class="group inline-flex items-center border-b border-[#1a1a1a] pb-2 w-max text-[#1a1a1a] text-[10px] md:text-xs tracking-[0.2em] uppercase transition-opacity hover:opacity-70">
+                            VIEW MORE
+                            <span
+                                class="w-1 h-1 bg-[#1a1a1a] rounded-full ml-4 group-hover:scale-150 transition-transform"></span>
                         </a>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-2/3">
-                    <img 
-                        src="/img/chapel.jpg" 
-                        alt="Minimalist Wedding Chapel with City View" 
-                        class="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover"
-                    >
+                <div class="w-full lg:w-2/3 reveal overflow-hidden">
+                    <img src="/img/chapel.jpg" alt="Minimalist Wedding Chapel with City View"
+                        class="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover reveal-scale-img">
                 </div>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch mt-24 md:mt-32">
-                
-                <div class="flex w-full lg:w-1/3 shrink-0">
+
+                <div class="flex w-full lg:w-1/3 shrink-0 reveal reveal-delay-200">
                     <div class="flex flex-col items-center mr-8 md:mr-12 shrink-0">
-                        <span class="text-[#1a1a1a] text-[10px] tracking-[0.2em] font-serif writing-vertical-rl rotate-180 mb-6">
+                        <span
+                            class="text-[#1a1a1a] text-[10px] tracking-[0.2em] font-serif writing-vertical-rl rotate-180 mb-6">
                             Party Space
                         </span>
                         <div class="w-[1px] h-full min-h-[150px] bg-gray-300"></div>
@@ -472,32 +529,31 @@
 
                     <div class="flex flex-col justify-center pt-8 md:pt-16">
                         <span class="text-gray-500 text-[10px] md:text-xs tracking-widest mb-6 block">パーティ会場</span>
-                        
+
                         <h3 class="text-[#1a1a1a] text-xl md:text-2xl font-serif leading-[1.8] tracking-[0.15em] mb-8">
                             上質な木目と光り輝く<br>
                             大理石の調和が美しい<br>
                             パーティ会場
                         </h3>
-                        
+
                         <p class="text-gray-600 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-12 max-w-sm">
                             窓から降り注ぐ自然光が開放的な空間と大<br>
                             人上質な雰囲気が花嫁の魅力を最大限引き<br>
                             立てる。
                         </p>
 
-                        <a href="#" class="group inline-flex items-center border-b border-[#1a1a1a] pb-2 w-max text-[#1a1a1a] text-[10px] md:text-xs tracking-[0.2em] uppercase transition-opacity hover:opacity-70">
-                            VIEW MORE 
-                            <span class="w-1 h-1 bg-[#1a1a1a] rounded-full ml-4 group-hover:scale-150 transition-transform"></span>
+                        <a href="#"
+                            class="group inline-flex items-center border-b border-[#1a1a1a] pb-2 w-max text-[#1a1a1a] text-[10px] md:text-xs tracking-[0.2em] uppercase transition-opacity hover:opacity-70">
+                            VIEW MORE
+                            <span
+                                class="w-1 h-1 bg-[#1a1a1a] rounded-full ml-4 group-hover:scale-150 transition-transform"></span>
                         </a>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-2/3">
-                    <img 
-                        src="/img/party.jpg" 
-                        alt="Elegant Party Space with Chandeliers" 
-                        class="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover"
-                    >
+                <div class="w-full lg:w-2/3 reveal overflow-hidden">
+                    <img src="/img/party.jpg" alt="Elegant Party Space with Chandeliers"
+                        class="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover reveal-scale-img">
                 </div>
             </div>
 
@@ -509,67 +565,85 @@
         <!-- Upper block: pattern strip + title + couple photo -->
         <div class="relative w-full" style="height: clamp(380px, 60vw, 660px);">
 
-            <!-- pattern-05 top area — same treatment as wedding space -->
+            <!-- pattern-05 top area — intense contrast based on screenshot -->
             <div class="absolute top-0 left-0 w-full pointer-events-none z-0" style="height: 55%;">
                 <div class="absolute inset-0"
-                     style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: auto 100%; mix-blend-mode: multiply; opacity: 0.3;"></div>
+                    style="background-image: url('img/pattern-05.png'); background-repeat: repeat; background-size: clamp(180px, 25vw, 352px) auto; opacity: 1;">
+                </div>
             </div>
 
             <!-- Dark title — behind photo, shows on cream/pattern areas -->
-            <div class="absolute w-full px-4 md:px-10 z-[5]" style="top: 48%;">
-                <h2 class="font-serif leading-none tracking-[0.03em] text-[#1a1a1a]"
+            <div class="absolute w-full px-4 md:px-10 z-[5] reveal reveal-delay-200" style="top: 48%;">
+                <h2 class="font-serif leading-none tracking-[0.03em] text-[#917b56] text-center w-full"
                     style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
                     RECOMMEND BRIDAL FAIR
                 </h2>
             </div>
 
             <!-- White title — clipped to image width only, in front of photo -->
-            <div class="absolute w-full px-4 md:px-10 z-20" style="top: 48%; clip-path: inset(0 calc(50% - clamp(113.5px, 15.75vw, 227px)) 0 calc(50% - clamp(113.5px, 15.75vw, 227px)));">
-                <h2 class="font-serif leading-none tracking-[0.03em] text-white"
+            <div class="absolute w-full px-4 md:px-10 z-20 reveal reveal-delay-200"
+                style="top: 48%; clip-path: inset(0 calc(50% - clamp(113.5px, 15.75vw, 227px)) 0 calc(50% - clamp(113.5px, 15.75vw, 227px)));">
+                <h2 class="font-serif leading-none tracking-[0.03em] text-white text-center w-full"
                     style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
                     RECOMMEND BRIDAL FAIR
                 </h2>
             </div>
 
             <!-- Couple photo — centered, fixed aspect ratio, on top -->
-            <div class="absolute top-[20%] left-1/2 -translate-x-1/2 z-10 shadow-2xl overflow-hidden"
-                 style="width: clamp(227px, 31.5vw, 454px); height: clamp(313px, 42vw, 617px);">
-                <img src="/img/yata.jpg" alt="Couple" class="w-full h-full object-cover object-center">
+            <div class="absolute top-[20%] left-1/2 -translate-x-1/2 z-10"
+                style="width: clamp(227px, 31.5vw, 454px); height: clamp(313px, 42vw, 617px);">
+                <div class="w-full h-full shadow-2xl overflow-hidden reveal">
+                    <img src="/img/yata.jpg" alt="Couple"
+                        class="w-full h-full object-cover object-center reveal-scale-img">
+                </div>
             </div>
         </div>
 
-        <!-- Bottom content: JP text left, CTA right -->
-        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center px-8 md:px-16 lg:px-24 pt-16 pb-24">
-            <p class="text-[#333333] text-sm tracking-[0.2em] leading-[2.8] font-light">
-                結婚式を考え出したら<br>
-                まずはブライダルフェアに<br>
-                ご参加ください。
-            </p>
-            <div class="flex items-center mt-8 lg:mt-0">
-                <a href="#" class="bg-[#8c734b] text-white text-[11px] tracking-widest px-8 py-5 transition hover:bg-[#7a6440]">
-                    おすすめのブライダルフェア
-                </a>
-                <div class="flex items-center">
-                    <div class="w-6 h-[1px] bg-[#8c734b]"></div>
-                    <div class="w-1 h-1 rounded-full bg-[#8c734b]"></div>
+        <!-- Bottom content: Grid flanked beside photo preserving document height -->
+        <div class="w-full relative z-20 pb-32 md:pb-48 lg:pb-64" style="margin-top: clamp(-40px, -10vw, -120px);">
+            <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 w-full px-8 md:px-[6vw]">
+
+                <!-- Left Flank -->
+                <div class="flex justify-center md:items-end md:pr-[18vw]">
+                    <p
+                        class="text-[#333333] text-[11px] md:text-sm tracking-[0.2em] leading-[2.8] font-light reveal text-center md:text-left">
+                        結婚式を考え出したら<br>
+                        まずはブライダルフェアに<br>
+                        ご参加ください。
+                    </p>
                 </div>
+
+                <!-- Right Flank -->
+                <div class="flex justify-center md:items-end md:pl-[18vw]">
+                    <div class="flex items-center reveal reveal-delay-200">
+                        <a href="#"
+                            class="bg-[#8c734b] text-white text-[11px] tracking-widest px-8 py-5 transition hover:bg-[#7a6440]">
+                            おすすめのブライダルフェア
+                        </a>
+                        <div class="hidden lg:flex items-center">
+                            <div class="w-6 h-[1px] bg-[#8c734b]"></div>
+                            <div class="w-1 h-1 rounded-full bg-[#8c734b]"></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
     </section>
 
+
+
     <section class="relative w-full z-20 flex flex-col">
-        
+
         <div class="relative w-full h-[50vh] md:h-[60vh] min-h-[400px]">
-            <img 
-                src="/img/party.jpg" 
-                alt="Exquisite Cuisine Background" 
-                class="absolute inset-0 w-full h-full object-cover"
-            >
+            <img src="/img/party.jpg" alt="Exquisite Cuisine Background"
+                class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent"></div>
 
             <div class="absolute bottom-12 left-8 md:left-24 z-10">
-                <h2 class="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif tracking-[0.15em] mb-2 md:mb-4">
+                <h2
+                    class="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif tracking-[0.15em] mb-2 md:mb-4">
                     EXQUISITE CUISINE
                 </h2>
                 <p class="text-[#b79769] text-[10px] md:text-xs tracking-[0.1em] font-serif italic">
@@ -579,13 +653,15 @@
         </div>
 
         <div class="relative w-full bg-[#0a0a0a] pt-16 md:pt-24 pb-32 px-8 md:px-24">
-            
-            <div class="relative max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between z-10">
-                
+
+            <div
+                class="relative max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between z-10">
+
                 <div class="flex w-full lg:w-1/2 mt-16 lg:mt-0">
-                    
+
                     <div class="flex flex-col items-center mr-8 md:mr-12 shrink-0">
-                        <span class="text-white text-[10px] tracking-[0.2em] font-serif writing-vertical-rl rotate-180 mb-6">
+                        <span
+                            class="text-white text-[10px] tracking-[0.2em] font-serif writing-vertical-rl rotate-180 mb-6">
                             Cuisine & Wine
                         </span>
                         <div class="w-[1px] h-[150px] bg-gray-700"></div>
@@ -593,38 +669,40 @@
 
                     <div class="flex flex-col pt-8">
                         <span class="text-gray-400 text-[10px] md:text-xs tracking-widest mb-6 block">料理＆ワイン</span>
-                        
+
                         <h3 class="text-white text-lg md:text-2xl font-serif leading-[1.8] tracking-[0.15em] mb-8">
                             フレンチの巨匠が仕上げる、<br>
                             ゲストの記憶に残る本物の味
                         </h3>
-                        
-                        <p class="text-gray-400 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-6 max-w-[400px] font-light">
+
+                        <p
+                            class="text-gray-400 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-6 max-w-[400px] font-light">
                             フランス料理の技法エスプリで、<br>
                             その時期に一番美味しい旬の食材を国内外から厳選し、<br>
                             素材一つひとつの持ち味を最大限に引き出した<br>
                             3つ星店で経験を積んだシェフ監修のお料理。
                         </p>
-                        
-                        <p class="text-gray-400 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-12 max-w-[400px] font-light">
+
+                        <p
+                            class="text-gray-400 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-12 max-w-[400px] font-light">
                             温度や鮮度、見た目にまでこだわり抜いた、<br>
                             至極の逸品で大人のおもてなしを。
                         </p>
 
-                        <a href="#" class="group inline-flex items-center border-b border-gray-500 pb-2 w-max text-white text-[10px] tracking-[0.2em] uppercase transition hover:border-white">
-                            VIEW MORE 
-                            <span class="w-1 h-1 bg-white rounded-full ml-4 group-hover:scale-150 transition-transform"></span>
+                        <a href="#"
+                            class="group inline-flex items-center border-b border-gray-500 pb-2 w-max text-white text-[10px] tracking-[0.2em] uppercase transition hover:border-white">
+                            VIEW MORE
+                            <span
+                                class="w-1 h-1 bg-white rounded-full ml-4 group-hover:scale-150 transition-transform"></span>
                         </a>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-20 -mt-32 md:-mt-48 lg:-mt-[250px] pointer-events-none">
-                    
-                    <img 
-                        src="/img/plate.jpg" 
-                        alt="Plate of food" 
-                        class="w-[250px] md:w-[400px] lg:w-[500px] xl:w-[550px] h-auto object-contain drop-shadow-2xl pointer-events-auto"
-                    >
+                <div
+                    class="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-20 -mt-32 md:-mt-48 lg:-mt-[250px] pointer-events-none">
+
+                    <img src="/img/plate.jpg" alt="Plate of food"
+                        class="w-[250px] md:w-[400px] lg:w-[500px] xl:w-[550px] h-auto object-contain drop-shadow-2xl pointer-events-auto">
                 </div>
 
             </div>
@@ -633,10 +711,11 @@
 
     <section class="w-full flex flex-col md:flex-row h-auto md:h-[500px] lg:h-[700px] z-20 relative">
 
-        <a href="#" class="relative w-full md:w-1/3 h-[400px] md:h-full overflow-hidden group block">
-            
-            <img src="/img/chapel.jpg" alt="Cake and Desert" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-            
+        <a href="pages/floor.html" class="relative w-full md:w-1/3 h-[400px] md:h-full overflow-hidden group block">
+
+            <img src="/img/chapel.jpg" alt="Floor"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+
             <div class="absolute inset-0 bg-black/40 transition-colors duration-500 group-hover:bg-black/50"></div>
 
             <div class="absolute inset-0 flex flex-col justify-between items-center py-12 md:py-16">
@@ -644,23 +723,25 @@
 
                 <div class="text-center transform transition-transform duration-500 group-hover:-translate-y-2">
                     <h3 class="text-white text-2xl lg:text-3xl font-serif tracking-[0.1em] mb-4 drop-shadow-md">
-                        Cake & Desert
+                        Floor
                     </h3>
                     <p class="text-gray-200 text-[10px] tracking-[0.2em] drop-shadow-md">
-                        ケーキ＆デザート
+                        フロア
                     </p>
                 </div>
 
-                <div class="flex items-center border-b border-white/50 pb-2 transition-colors duration-300 group-hover:border-white">
+                <div
+                    class="flex items-center border-b border-white/50 pb-2 transition-colors duration-300 group-hover:border-white">
                     <span class="text-white text-[10px] tracking-[0.2em] uppercase mr-4 drop-shadow-md">VIEW MORE</span>
                     <span class="w-1 h-1 bg-white rounded-full drop-shadow-md"></span>
                 </div>
             </div>
         </a>
 
-        <a href="#" class="relative w-full md:w-1/3 h-[400px] md:h-full overflow-hidden group block">
-            
-            <img src="/img/party.jpg" alt="Wedding Dress" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+        <a href="pages/concept.html" class="relative w-full md:w-1/3 h-[400px] md:h-full overflow-hidden group block">
+
+            <img src="/img/party.jpg" alt="Concept"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
             <div class="absolute inset-0 bg-black/40 transition-colors duration-500 group-hover:bg-black/50"></div>
 
             <div class="absolute inset-0 flex flex-col justify-between items-center py-12 md:py-16">
@@ -668,23 +749,25 @@
 
                 <div class="text-center transform transition-transform duration-500 group-hover:-translate-y-2">
                     <h3 class="text-white text-2xl lg:text-3xl font-serif tracking-[0.1em] mb-4 drop-shadow-md">
-                        Wedding Dress
+                        Concept
                     </h3>
                     <p class="text-gray-200 text-[10px] tracking-[0.2em] drop-shadow-md">
-                        ウエディングドレス
+                        コンセプト
                     </p>
                 </div>
 
-                <div class="flex items-center border-b border-white/50 pb-2 transition-colors duration-300 group-hover:border-white">
+                <div
+                    class="flex items-center border-b border-white/50 pb-2 transition-colors duration-300 group-hover:border-white">
                     <span class="text-white text-[10px] tracking-[0.2em] uppercase mr-4 drop-shadow-md">VIEW MORE</span>
                     <span class="w-1 h-1 bg-white rounded-full drop-shadow-md"></span>
                 </div>
             </div>
         </a>
 
-        <a href="#" class="relative w-full md:w-1/3 h-[400px] md:h-full overflow-hidden group block">
-            
-            <img src="/img/yata.jpg" alt="Wedding Items" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+        <a href="pages/performer.html" class="relative w-full md:w-1/3 h-[400px] md:h-full overflow-hidden group block">
+
+            <img src="/img/yata.jpg" alt="Performer"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
             <div class="absolute inset-0 bg-black/40 transition-colors duration-500 group-hover:bg-black/50"></div>
 
             <div class="absolute inset-0 flex flex-col justify-between items-center py-12 md:py-16">
@@ -692,14 +775,15 @@
 
                 <div class="text-center transform transition-transform duration-500 group-hover:-translate-y-2">
                     <h3 class="text-white text-2xl lg:text-3xl font-serif tracking-[0.1em] mb-4 drop-shadow-md">
-                        Wedding Items
+                        Performer
                     </h3>
                     <p class="text-gray-200 text-[10px] tracking-[0.2em] drop-shadow-md">
-                        ウエディングアイテム
+                        パフォーマー
                     </p>
                 </div>
 
-                <div class="flex items-center border-b border-white/50 pb-2 transition-colors duration-300 group-hover:border-white">
+                <div
+                    class="flex items-center border-b border-white/50 pb-2 transition-colors duration-300 group-hover:border-white">
                     <span class="text-white text-[10px] tracking-[0.2em] uppercase mr-4 drop-shadow-md">VIEW MORE</span>
                     <span class="w-1 h-1 bg-white rounded-full drop-shadow-md"></span>
                 </div>
@@ -710,44 +794,75 @@
 
     <section class="relative w-full z-20">
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 w-full h-auto lg:h-[600px]">
-            
-            <div class="relative h-[400px] lg:h-full overflow-hidden">
-                <img src="/img/party.jpg" alt="Wedding Plan" class="absolute inset-0 w-full h-full object-cover">
-                
-                <div class="absolute left-6 top-1/2 -translate-y-1/2 flex flex-col items-center">
-                    <span class="text-white text-[10px] tracking-[0.3em] uppercase writing-vertical-rl rotate-180 mb-6">Plan Contents</span>
-                    <div class="w-[1px] h-24 bg-white/30"></div>
-                </div>
+        <!-- WEDDING PLAN / PLAN CONTENTS OVERLAP BLOCK -->
+        <div class="relative w-full bg-[#0a0a0a] pt-16 md:pt-32 pb-16 md:pb-32 overflow-hidden">
+
+            <!-- Right side patterned background mask -->
+            <div class="absolute top-0 right-0 w-[80%] md:w-[60%] lg:w-[50%] h-full pointer-events-none"
+                style="background-color: #917b56; -webkit-mask-image: url('img/pattern-05.png'); mask-image: url('img/pattern-05.png'); -webkit-mask-size: clamp(180px, 25vw, 352px) auto; mask-size: clamp(180px, 25vw, 352px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 1;">
             </div>
 
-            <div class="relative bg-[#0d0d0d] flex items-center justify-center px-8 py-20 lg:py-0 overflow-hidden">
-                
-                <div class="absolute inset-0 opacity-40 z-0">
-                    <div class="w-full h-full bg-[url('/img/gold-pattern-bg.png')] bg-repeat bg-[length:200px_200px]"></div>
+            <div
+                class="max-w-[1920px] mx-auto relative w-full h-full flex flex-col md:flex-row items-center min-h-[60vh] md:min-h-[80vh]">
+
+                <!-- Left floating line + text -->
+                <div class="hidden md:flex absolute left-8 lg:left-[5%] top-0 bottom-0 flex-col items-center z-30">
+                    <div class="w-[1px] h-24 lg:h-32 bg-gray-600 mb-8 mt-16 lg:mt-32"></div>
+                    <!-- Rotated text -->
+                    <span class="text-gray-300 text-[10px] md:text-sm font-serif tracking-[0.25em]"
+                        style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                        Plan Contents
+                    </span>
+                    <div class="w-[1px] flex-grow bg-gray-600 mt-8 mb-20 opacity-30"></div>
                 </div>
 
-                <div class="relative z-10 text-center flex flex-col items-center">
-                    <h2 class="text-white text-4xl md:text-6xl font-serif tracking-[0.1em] mb-4">WEDDING PLAN</h2>
-                    <p class="text-gray-400 text-[10px] tracking-[0.2em] mb-8">ウエディングプラン</p>
-                    
-                    <p class="text-white text-sm tracking-[0.2em] mb-12">最適な料金プランをご提案します</p>
+                <!-- Content Container -->
+                <div
+                    class="w-full px-4 md:px-0 flex flex-col md:flex-row items-center relative z-20 h-full md:justify-center">
 
-                    <div class="flex items-center group">
-                        <a href="#" class="bg-white text-[#1a1a1a] text-[10px] tracking-[0.2em] px-10 py-5 transition-colors duration-300 group-hover:bg-gray-200">
-                            ウエディングプランを見る
-                        </a>
-                        <div class="flex items-center">
-                            <div class="w-8 h-[1px] bg-brand-gold"></div>
-                            <div class="w-1.5 h-1.5 rounded-full bg-brand-gold"></div>
+                    <!-- Main Image overlapping the pattern boundary -->
+                    <div class="w-full md:w-[40%] lg:w-[32%] relative z-10 shadow-2xl reveal md:-ml-8 lg:-ml-[5%]">
+                        <img src="/img/yata.jpg" alt="Wedding Plan"
+                            class="w-full h-[50vh] md:h-[70vh] object-cover object-center grayscale-[0.2] contrast-[1.1] reveal-scale-img">
+                    </div>
+
+                    <!-- Text Overlay Content -->
+                    <div
+                        class="w-full md:w-[50%] lg:w-[45%] relative z-30 flex flex-col items-start mt-12 md:mt-0 px-8 md:px-0 md:-ml-12 lg:-ml-[8%]">
+                        <h2 class="text-white font-serif tracking-[0.1em] mb-4 reveal reveal-delay-200"
+                            style="font-size: clamp(2.5rem, 6vw, 6.5rem); line-height: 1;">
+                            WEDDING PLAN
+                        </h2>
+
+                        <span
+                            class="block text-white text-[10px] md:text-xs tracking-widest mb-6 reveal reveal-delay-200">
+                            ウエディングプラン
+                        </span>
+
+                        <p
+                            class="text-white text-[11px] md:text-sm tracking-[0.2em] leading-loose mb-12 reveal reveal-delay-400">
+                            最適な料金プランをご提案します
+                        </p>
+
+                        <!-- White button block with tiny gold line -->
+                        <div class="flex items-center reveal reveal-delay-600 group">
+                            <a href="#"
+                                class="bg-white text-[#917b56] text-[10px] lg:text-[11px] tracking-[0.2em] px-10 py-5 transition-colors duration-300 hover:bg-gray-100 min-w-[200px] md:min-w-[280px] text-center">
+                                ウエディングプランを見る
+                            </a>
+                            <div class="flex items-center -ml-4 pointer-events-none">
+                                <div class="w-12 lg:w-20 h-[1px] bg-[#917b56]"></div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
 
         <div class="relative w-full py-32 px-8 md:px-24 overflow-hidden">
-            <img src="/img/marble-bg.jpg" alt="Marble Background" class="absolute inset-0 w-full h-full object-cover z-0">
+            <img src="/img/marble-bg.jpg" alt="Marble Background"
+                class="absolute inset-0 w-full h-full object-cover z-0">
             <div class="absolute inset-0 bg-black/60 z-0"></div>
 
             <div class="relative z-10 max-w-7xl mx-auto flex flex-col items-start">
@@ -759,280 +874,195 @@
                     <h2 class="text-white text-4xl md:text-6xl font-serif tracking-[0.2em] mb-4">PRESENTS</h2>
                     <p class="text-brand-gold text-[10px] md:text-xs tracking-[0.3em]">お得な特典のご紹介</p>
                 </div>
-                
+
                 <div class="w-24 h-[1px] bg-white/30 mt-8"></div>
             </div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto mt-16 flex flex-col lg:flex-row gap-12 items-start">
-    
-    <div class="w-full lg:w-7/12">
-        <img src="/img/bar-couple.jpg" alt="Couple at the bar" class="w-full h-auto object-cover shadow-2xl">
-    </div>
 
-    <div class="w-full lg:w-5/12 flex flex-col space-y-12">
-        
-        <div class="flex gap-6 items-start group">
-            <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden">
-                <img src="/img/gift-dress.jpg" alt="Dress Gift" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-            </div>
-            <div class="flex-1 border-b border-white/20 pb-8">
-                <span class="inline-block bg-brand-gold text-white text-[9px] px-2 py-0.5 mb-3 uppercase tracking-wider">成約特典</span>
-                <h4 class="text-white text-base md:text-lg font-serif mb-2 tracking-wide">【ドレス1着】プレゼント</h4>
-                <p class="text-gray-400 text-[11px] leading-relaxed mb-4">ご成約時には、憧れのドレス19.8万円相当をプレゼント！<br>(※詳しくはフェアをご確認ください♪)</p>
-                <a href="#" class="inline-flex items-center text-white text-[10px] tracking-[0.2em] uppercase hover:opacity-70 transition-opacity">
-                    VIEW MORE <span class="w-1 h-1 bg-white rounded-full ml-3"></span>
-                </a>
-            </div>
-        </div>
-
-        <div class="flex gap-6 items-start group">
-            <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden">
-                <img src="/img/gift-discount.jpg" alt="Discount Gift" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-            </div>
-            <div class="flex-1 border-b border-white/20 pb-8">
-                <span class="inline-block bg-brand-gold text-white text-[9px] px-2 py-0.5 mb-3 uppercase tracking-wider">成約特典</span>
-                <h4 class="text-white text-base md:text-lg font-serif mb-2 tracking-wide">【最大◆70万円】ご優待</h4>
-                <p class="text-gray-400 text-[11px] leading-relaxed mb-4">挙式料・装花・アルバムなど・・・今だけ！最大70万円ご優待付き。(※詳しくはフェアをご確認ください♪)</p>
-                <a href="#" class="inline-flex items-center text-white text-[10px] tracking-[0.2em] uppercase hover:opacity-70 transition-opacity">
-                    VIEW MORE <span class="w-1 h-1 bg-white rounded-full ml-3"></span>
-                </a>
-            </div>
-        </div>
-
-        <div class="flex gap-6 items-start group">
-            <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden">
-                <img src="/img/gift-lunch.jpg" alt="Lunch Gift" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-            </div>
-            <div class="flex-1 border-b border-white/20 pb-8">
-                <span class="inline-block bg-brand-gold text-white text-[9px] px-2 py-0.5 mb-3 uppercase tracking-wider">成約特典</span>
-                <h4 class="text-white text-base md:text-lg font-serif mb-2 tracking-wide">レストランランチ券（2名様分）プレゼント</h4>
-                <p class="text-gray-400 text-[11px] leading-relaxed mb-4">開催日限定、もれなくプレゼント！（※詳しくはフェアをご確認ください）</p>
-                <a href="#" class="inline-flex items-center text-white text-[10px] tracking-[0.2em] uppercase hover:opacity-70 transition-opacity">
-                    VIEW MORE <span class="w-1 h-1 bg-white rounded-full ml-3"></span>
-                </a>
-            </div>
-        </div>
-
-    </div>
-</div>
-<div class="relative z-10 max-w-7xl mx-auto mt-32 pb-24 border-t border-white/10 pt-20">
-    
-    <div class="flex flex-col items-center text-center mb-20">
-        <div class="flex items-center gap-4 mb-6">
-            <img src="/img/logo-icon.png" alt="Icon" class="w-8 h-8 object-contain">
-            <h2 class="text-white text-3xl md:text-4xl font-serif tracking-[0.2em] uppercase">City Club of Tokyo</h2>
-        </div>
-        <p class="text-gray-400 text-[10px] md:text-xs tracking-[0.2em] mb-4">
-            〒104-0061 東京都中央区銀座3丁目3-1 ZOE銀座9階
-        </p>
-        <a href="#" class="text-white text-[10px] md:text-xs tracking-widest border-b border-white/30 pb-1 hover:border-white transition-colors">
-            Google Mapを見る
-        </a>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-0">
-        
-        <div class="flex gap-8 md:gap-12 lg:pr-12">
-            <div class="flex flex-col items-center shrink-0">
-                <span class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Contents</span>
-                <div class="w-[1px] h-full bg-gray-800"></div>
+            <div class="w-full lg:w-7/12">
+                <img src="/img/bar-couple.jpg" alt="Couple at the bar" class="w-full h-auto object-cover shadow-2xl" onerror="this.style.display='none'">
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-5 w-full pt-2">
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ブライダルフェア</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">料理＆ワイン</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">よくあるご質問</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ウエディングプラン</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ケーキ＆デザート</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">アクセス</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">挙式会場</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ウエディングドレス</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ご列席の皆様へ</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">パーティ会場</a>
-                <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ウエディングアイテム</a>
-            </div>
-        </div>
+            <div class="w-full lg:w-5/12 flex flex-col space-y-12">
 
-        <div class="flex gap-8 md:gap-12 lg:pl-12 lg:border-l lg:border-white/10">
-            <div class="flex flex-col items-center shrink-0">
-                <span class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Reservation&Contact</span>
-                <div class="w-[1px] h-full bg-gray-800"></div>
-            </div>
-
-            <div class="w-full flex flex-col pt-2">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
-                    <a href="#" class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">ブライダルフェア予約</a>
-                    <a href="#" class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">見学予約</a>
-                    <a href="#" class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">資料請求</a>
-                    <a href="#" class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">お問い合わせ</a>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <p class="text-gray-500 text-[8px] tracking-widest mb-2">ブライダルフェア・見学ご希望のお客様</p>
-                        <p class="text-white text-xl font-serif tracking-widest mb-1">0800-919-8014</p>
-                        <p class="text-gray-600 text-[8px] tracking-widest leading-loose">平日12:00～20:00／土日祝9:00～20:00</p>
+                <div class="flex gap-6 items-start group">
+                    <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden">
+                        <img src="/img/gift-dress.jpg" alt="Dress Gift"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.closest('.w-32').style.display='none'">
                     </div>
-                    <div>
-                        <p class="text-gray-500 text-[8px] tracking-widest mb-2">ご成約済み・ご列席のお客様</p>
-                        <p class="text-white text-xl font-serif tracking-widest mb-1">050-1741-7365</p>
-                        <p class="text-gray-600 text-[8px] tracking-widest leading-loose">平日12:00～19:00／土日祝9:00～20:00<br>※祝日を除く月曜・火曜定休</p>
+                    <div class="flex-1 border-b border-white/20 pb-8">
+                        <span
+                            class="inline-block bg-brand-gold text-white text-[9px] px-2 py-0.5 mb-3 uppercase tracking-wider">成約特典</span>
+                        <h4 class="text-white text-base md:text-lg font-serif mb-2 tracking-wide">【ドレス1着】プレゼント</h4>
+                        <p class="text-gray-400 text-[11px] leading-relaxed mb-4">
+                            ご成約時には、憧れのドレス19.8万円相当をプレゼント！<br>(※詳しくはフェアをご確認ください♪)</p>
+                        <a href="#"
+                            class="inline-flex items-center text-white text-[10px] tracking-[0.2em] uppercase hover:opacity-70 transition-opacity">
+                            VIEW MORE <span class="w-1 h-1 bg-white rounded-full ml-3"></span>
+                        </a>
                     </div>
                 </div>
+
+                <div class="flex gap-6 items-start group">
+                    <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden">
+                        <img src="/img/gift-discount.jpg" alt="Discount Gift"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.closest('.w-32').style.display='none'">
+                    </div>
+                    <div class="flex-1 border-b border-white/20 pb-8">
+                        <span
+                            class="inline-block bg-brand-gold text-white text-[9px] px-2 py-0.5 mb-3 uppercase tracking-wider">成約特典</span>
+                        <h4 class="text-white text-base md:text-lg font-serif mb-2 tracking-wide">【最大◆70万円】ご優待</h4>
+                        <p class="text-gray-400 text-[11px] leading-relaxed mb-4">
+                            挙式料・装花・アルバムなど・・・今だけ！最大70万円ご優待付き。(※詳しくはフェアをご確認ください♪)</p>
+                        <a href="#"
+                            class="inline-flex items-center text-white text-[10px] tracking-[0.2em] uppercase hover:opacity-70 transition-opacity">
+                            VIEW MORE <span class="w-1 h-1 bg-white rounded-full ml-3"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 items-start group">
+                    <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden">
+                        <img src="/img/gift-lunch.jpg" alt="Lunch Gift"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.closest('.w-32').style.display='none'">
+                    </div>
+                    <div class="flex-1 border-b border-white/20 pb-8">
+                        <span
+                            class="inline-block bg-brand-gold text-white text-[9px] px-2 py-0.5 mb-3 uppercase tracking-wider">成約特典</span>
+                        <h4 class="text-white text-base md:text-lg font-serif mb-2 tracking-wide">レストランランチ券（2名様分）プレゼント
+                        </h4>
+                        <p class="text-gray-400 text-[11px] leading-relaxed mb-4">開催日限定、もれなくプレゼント！（※詳しくはフェアをご確認ください）</p>
+                        <a href="#"
+                            class="inline-flex items-center text-white text-[10px] tracking-[0.2em] uppercase hover:opacity-70 transition-opacity">
+                            VIEW MORE <span class="w-1 h-1 bg-white rounded-full ml-3"></span>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
 
-    <div class="w-full mt-24 pt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 border-t border-white/5">
-        <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Company</a>
-        <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Recruit</a>
-        <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Customer Harassment Policy</a>
-    </div>
-</div>
+        <!-- DECORATIVE VIDEO DIVIDER (Pattern and Video Only) -->
+        <div class="relative w-full h-[40vh] md:h-[60vh] mt-32 overflow-hidden reveal">
+            <!-- Dark Base Background -->
+            <div class="absolute inset-0 bg-[#0a0a0a]"></div>
+
+            <!-- Video base layer -->
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                <source src="img/video.mp4" type="video/mp4">
+            </video>
+
+            <!-- Pattern overlay with elegant mask effect -->
+            <div class="absolute inset-0 pointer-events-none"
+                style="background-color: #000000; -webkit-mask-image: url('img/pattern-05.png'); mask-image: url('img/pattern-05.png'); -webkit-mask-size: clamp(180px, 25vw, 352px) auto; mask-size: clamp(180px, 25vw, 352px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 0.9;">
+            </div>
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a] pointer-events-none"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto mt-24 pb-24 border-t border-white/10 pt-20 px-8 md:px-12 lg:px-24">
+
+            <div class="flex flex-col items-center text-center mb-20">
+                <div class="flex flex-col md:flex-row items-center gap-6 mb-6">
+                    <img src="/img/logo.png" alt="Yata" class="w-auto h-12 md:h-16 lg:h-36 object-contain">
+                    <span class="hidden md:block w-[1px] h-10 bg-white/30"></span>
+                    <h2 class="text-white text-3xl md:text-4xl font-serif tracking-[0.2em] uppercase">YATA</h2>
+                </div>
+                <p class="text-gray-400 text-[10px] md:text-xs tracking-[0.2em] mb-4">
+                    〒104-0061 東京都中央区銀座3丁目3-1 ZOE銀座9階
+                </p>
+                <a href="#"
+                    class="text-white text-[10px] md:text-xs tracking-widest border-b border-white/30 pb-1 hover:border-white transition-colors">
+                    Google Mapを見る
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-0">
+
+                <div class="flex gap-8 md:gap-12 lg:pr-12">
+                    <div class="flex flex-col items-center shrink-0">
+                        <span
+                            class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Contents</span>
+                        <div class="w-[1px] h-full bg-gray-800"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-5 w-full pt-2">
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ブライダルフェア</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">料理＆ワイン</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">よくあるご質問</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ウエディングプラン</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ケーキ＆デザート</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">アクセス</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">挙式会場</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ウエディングドレス</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ご列席の皆様へ</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">パーティ会場</a>
+                        <a href="#" class="text-white text-[11px] tracking-widest hover:text-brand-gold">ウエディングアイテム</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-8 md:gap-12 lg:pl-12 lg:border-l lg:border-white/10">
+                    <div class="flex flex-col items-center shrink-0">
+                        <span
+                            class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Reservation&Contact</span>
+                        <div class="w-[1px] h-full bg-gray-800"></div>
+                    </div>
+
+                    <div class="w-full flex flex-col pt-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mb-10">
+                            <a href="#"
+                                class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">ブライダルフェア予約</a>
+                            <a href="#"
+                                class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">見学予約</a>
+                            <a href="#"
+                                class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">資料請求</a>
+                            <a href="#"
+                                class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">お問い合わせ</a>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-gray-500 text-[8px] tracking-widest mb-2">ブライダルフェア・見学ご希望のお客様</p>
+                                <p class="text-white text-xl font-serif tracking-widest mb-1">0800-919-8014</p>
+                                <p class="text-gray-600 text-[8px] tracking-widest leading-loose">
+                                    平日12:00～20:00／土日祝9:00～20:00</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-[8px] tracking-widest mb-2">ご成約済み・ご列席のお客様</p>
+                                <p class="text-white text-xl font-serif tracking-widest mb-1">050-1741-7365</p>
+                                <p class="text-gray-600 text-[8px] tracking-widest leading-loose">
+                                    平日12:00～19:00／土日祝9:00～20:00<br>※祝日を除く月曜・火曜定休</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="w-full mt-24 pt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 border-t border-white/5">
+                <a href="#"
+                    class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Company</a>
+                <a href="#"
+                    class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Recruit</a>
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Privacy
+                    Policy</a>
+                <a href="#"
+                    class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Customer
+                    Harassment Policy</a>
+            </div>
+        </div>
     </section>
 
-    <section class="relative w-full bg-[#f4f2ea] pt-20 pb-24 px-8 md:px-24">
-    <div class="max-w-7xl mx-auto">
-        
-        <div class="flex items-baseline gap-6 mb-16 border-b border-gray-300 pb-6">
-            <h2 class="text-[#1a1a1a] text-2xl md:text-3xl font-serif tracking-widest uppercase">Group Company</h2>
-            <a href="#" class="text-gray-600 text-[10px] md:text-xs tracking-widest hover:underline flex items-center">
-                結婚式場・グループ施設 <span class="ml-2 text-[8px]">↗</span>
-            </a>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 items-start">
-            
-            <div class="space-y-10">
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">関東エリア</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・シャルマンシーナ東京（表参道）</li>
-                        <li>・南青山サンタキアラ教会（表参道）</li>
-                        <li>・ラグナヴェール東京（東京・八重洲）</li>
-                        <li>・アンジェリオン オ プラザ東京（東京・八重洲）</li>
-                        <li>・ザ マグナス東京（銀座）</li>
-                        <li><strong class="text-[#1a1a1a]">・CITY CLUB OF TOKYO（銀座）</strong></li>
-                        <li>・ルミヴェール東京（汐留）</li>
-                        <li>・ロザンジュイア広尾迎賓館（広尾）</li>
-                        <li>・パラッツォドゥカーレ麻布（六本木）</li>
-                        <li>・アルマリアン東京（池袋）</li>
-                        <li class="text-gray-400">※アヴェニールクラス東京と統合</li>
-                        <li>・ampersand By LAGUNAVEIL ATELIER（渋谷）</li>
-                        <li>・ラグナスイート新横浜（新横浜）</li>
-                        <li>・ラグナヴェール スカイテラス（さいたま新都心）</li>
-                        <li>・ラ ポルト（栃木・小山）</li>
-                        <li class="text-gray-400">※ザ ライブラリーと統合</li>
-                        <li>・Ｌ２１２６（表参道）</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">関西エリア</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・ラグナヴェール プレミア（大阪・梅田）</li>
-                        <li>・ラグナヴェール大阪（大阪・梅田）</li>
-                        <li>・ア・ラ・モードパレ&ザ・リゾート（神戸）</li>
-                        <li>・ラヴィマーナ神戸（神戸）</li>
-                        <li>・KIYOMIZU 京都東山（京都）</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="space-y-10">
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">東北エリア</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・ラグナヴェール仙台（仙台）</li>
-                        <li class="text-gray-400">※アンジェリオン オ プラザ仙台と統合</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">中部エリア</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・ラグナヴェール名古屋（名古屋・栄）</li>
-                        <li>・GRADATIONS（名古屋）</li>
-                        <li>・ラソール ガーデン・名古屋（名古屋）</li>
-                        <li>・ラグナヴェール金沢（石川・金沢）</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">中国・四国エリア</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・ラグナヴェール広島（広島・八丁堀）</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">九州・沖縄エリア</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・アルマリアン福岡（福岡・天神）</li>
-                        <li>・セントレジェンダ沖縄（北谷）</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="lg:border-l lg:border-gray-300 lg:pl-12 space-y-10">
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">レストラン</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・SINC BISTRO（大阪・梅田）</li>
-                        <li>・ODD（大阪）</li>
-                        <li>・GRADATIONS（名古屋）</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">料亭</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・渭水苑（徳島）</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">ホテル</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・ラグナスィート新横浜（新横浜）</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="space-y-10">
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">ドレスショップ</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・プリマカーラ</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">ワインショップ</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・WINELIST</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">オンラインショップ</h3>
-                    <ul class="text-gray-600 text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>・アニクリオンラインストア</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#1a1a1a] text-[11px] font-bold tracking-widest mb-6">その他</h3>
-                    <ul class="text-[#1a1a1a] text-[10px] space-y-3 leading-relaxed tracking-widest">
-                        <li>旅行券・宿泊券のご予約</li>
-                        <li>宴会/会議のご案内</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
+    <div class="w-full bg-[#111] py-6 text-center">
+        <p class="text-white text-[9px] md:text-[10px] tracking-[0.3em] uppercase">
+            © ON THE PAGE ALL RIGHTS RESERVED.
+        </p>
     </div>
-</section>
 
-<div class="w-full bg-[#111] py-6 text-center">
-    <p class="text-white text-[9px] md:text-[10px] tracking-[0.3em] uppercase">
-        © ON THE PAGE ALL RIGHTS RESERVED.
-    </p>
-</div>
-    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const menuBtn = document.getElementById("mobile-menu-btn");
@@ -1054,24 +1084,46 @@
             menuCloseBtn.addEventListener("click", closeMenu);
         });
 
-        // Sync both videos to play at the same time
+        // Sync all videos on the page to play at the exact same time
         const videos = document.querySelectorAll('video');
-        if (videos.length >= 2) {
+        if (videos.length > 1) {
             const primary = videos[0];
-            const secondary = videos[1];
             primary.addEventListener('timeupdate', () => {
-                if (Math.abs(secondary.currentTime - primary.currentTime) > 0.1) {
-                    secondary.currentTime = primary.currentTime;
+                for (let i = 1; i < videos.length; i++) {
+                    const vid = videos[i];
+                    if (Math.abs(vid.currentTime - primary.currentTime) > 0.1) {
+                        vid.currentTime = primary.currentTime;
+                    }
                 }
             });
         }
 
         // Reveal on scroll
-        const revealEls = document.querySelectorAll('.reveal');
+        const revealEls = document.querySelectorAll('.reveal, .reveal-clip');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
         }, { threshold: 0.15 });
         revealEls.forEach(el => revealObserver.observe(el));
+    </script>
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursor-follower');
+        if (cursor && cursorFollower) {
+            let mx = 0, my = 0, fx = 0, fy = 0;
+            document.addEventListener('mousemove', (e) => {
+                mx = e.clientX; my = e.clientY;
+                cursor.style.left = mx + 'px';
+                cursor.style.top  = my + 'px';
+            });
+            (function followCursor() {
+                fx += (mx - fx) * 0.1;
+                fy += (my - fy) * 0.1;
+                cursorFollower.style.left = fx + 'px';
+                cursorFollower.style.top  = fy + 'px';
+                requestAnimationFrame(followCursor);
+            })();
+        }
     </script>
 </body>
 

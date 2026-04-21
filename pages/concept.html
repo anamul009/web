@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONCEPT | CLUB YATA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif:    ['"Playfair Display"', 'serif'],
+                        mincho:   ['"Shippori Mincho B1"', 'serif'],
+                        'sans-jp':['"Noto Sans JP"', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Google Fonts for Sans Serif Titles -->
+    <style>
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .shape-square-rounded {
+            border-radius: 40px;
+        }
+
+        .shape-pill-horizontal {
+            border-radius: 120px;
+        }
+
+        .shape-arch {
+            border-radius: 120px 120px 40px 40px;
+        }
+    
+        /* Hamburger menu transition effects */
+        .menu-line { transition: all 0.3s ease-in-out; transform-origin: center; }
+        .menu-btn.active .line-1 { transform: rotate(45deg) translate(4px, 0px); }
+        .menu-btn.active .line-2 { opacity: 0; }
+        .menu-btn.active .line-3 { transform: rotate(-45deg) translate(-4px, 0px); }
+        /* Menu Overlay Transition */
+        #menu-overlay { clip-path: circle(0% at 100% 0%); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        #menu-overlay.open { clip-path: circle(150% at 100% 0%); }
+</style>
+</head>
+
+<body class="bg-[#03080b] text-white font-serif antialiased overflow-x-hidden">
+    <!-- Custom Cursor -->
+    <div id="cursor" class="fixed w-3 h-3 bg-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block"
+        style="pointer-events: none;"></div>
+    <div id="cursor-follower"
+        class="fixed w-10 h-10 border border-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block"
+        style="pointer-events: none;"></div>
+
+    <!-- Hero Background (Maple Leaves) -->
+    <div id="hero-leaf-bg" class="fixed top-0 left-0 w-full h-screen bg-cover bg-center opacity-60 z-[-2] filter brightness-[0.8]"
+        style="background-image: url('../img/japanese-maple-leaves-3978208_1280.jpg');"></div>
+
+    <!-- Secondary Background (Orchids) for lower sections -->
+    <div class="fixed top-[40vh] left-0 w-full h-[150vh] bg-cover bg-center opacity-[0.2] z-[-3] filter grayscale-[40%] brightness-[0.5]"
+        style="background-image: url('../img/hero-bg.jpg'); mix-blend-mode: multiply; mask-image: linear-gradient(to bottom, transparent, black 30%); -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%);">
+    </div>
+
+    
+    <!-- Full-screen Menu Overlay -->
+    <div id="menu-overlay" class="fixed inset-0 bg-[#f4f2ea] z-[90] flex flex-col lg:flex-row overflow-hidden">
+        <!-- Close button -->
+        <button id="menu-close-btn" class="absolute top-8 right-8 md:right-12 z-[110] flex flex-col items-center justify-center w-10 h-10 group">
+            <span class="block w-6 h-[1px] bg-[#1a1a1a] rotate-45 translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
+            <span class="block w-6 h-[1px] bg-[#1a1a1a] -rotate-45 -translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
+        </button>
+
+        <!-- Left Pane: Image (Hidden on mobile) -->
+        <div class="hidden lg:block lg:w-1/2 h-full relative overflow-hidden">
+            <img src="../img/1%20(3).jpg" alt="Menu Decoration" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center"></div>
+            </div>
+        </div>
+
+        <!-- Right Pane: Links -->
+        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center px-8 md:px-24 py-32 overflow-y-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-2xl">
+                <div class="space-y-4">
+                    <a href="../index.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Home</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="concept.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Concept</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="floor.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Floor</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="menu.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Menu</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+                <div class="space-y-4">
+                    <a href="performer.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Performer</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="notice.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Notice</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">EC</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="contact.html" class="group flex items-center justify-between border-b border-gray-300 pb-4 text-[#8c734b]">
+                        <span class="text-sm tracking-widest font-serif font-bold uppercase">Contact</span>
+                        <span class="w-6 h-6 rounded-full border border-[#8c734b] flex items-center justify-center text-[10px] group-hover:bg-[#8c734b] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-16 flex flex-wrap gap-x-8 gap-y-4">
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">資料請求</a>
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">お問い合わせ</a>
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">よくあるご質問</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Logo (Left) -->
+    <nav class="absolute z-50 top-0 w-full px-8 md:px-12 py-8 flex justify-between items-start pointer-events-none">
+        <div class="w-28 md:w-64 pointer-events-auto">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="YATA" class="w-full">
+            </a>
+        </div>
+    </nav>
+    <!-- Hamburger & Order Now (Right) -->
+    <nav class="fixed top-0 right-0 z-50 flex items-center p-5 md:p-8 md:pr-12 md:pt-10 pointer-events-auto">
+        <a href="#" class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-[#856d47]">
+            Order Now
+        </a>
+        <div class="flex items-center ml-2">
+            <div class="w-1 h-1 rounded-full bg-[#b79769]"></div>
+            <div class="w-6 md:w-10 h-[1px] bg-[#b79769]"></div>
+        </div>
+        <button id="mobile-menu-btn" class="menu-btn flex items-center space-x-[5px] ml-4 transition-opacity duration-300 hover:opacity-80 focus:outline-none z-50 relative cursor-pointer" aria-label="Toggle Menu">
+            <span class="menu-line line-1 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+            <span class="menu-line line-2 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+            <span class="menu-line line-3 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+        </button>
+    </nav>
+
+
+    <!-- Side Follow Us Text -->
+    <div
+        class="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-12 pointer-events-auto">
+        <span class="vertical-text text-[9px] tracking-[0.5em] uppercase opacity-40">Follow us —</span>
+        <div class="flex flex-col gap-6 opacity-40 text-[9px]">
+            <a href="https://www.instagram.com/clubyata_okayama/" target="_blank" rel="noopener noreferrer" class="hover:text-[#d4af37] transition-colors">IG</a>
+            <a href="#" class="hover:text-[#d4af37] transition-colors">TW</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 flex flex-col items-center text-center">
+        <div id="hero-content" class="relative z-10 w-[90%] md:w-[70%] lg:w-[60%] mx-auto mt-10 text-glow">
+            <h2 class="font-serif italic text-5xl md:text-6xl lg:text-7xl mb-12 tracking-wider text-white">CONCEPT</h2>
+
+            <h3 class="font-mincho golden-text text-xl md:text-2xl lg:text-3xl font-medium tracking-[0.1em] leading-loose mb-16 !text-[#d4af37]">
+                Crafting Timeless Moments<br>
+                for the Distinguished
+            </h3>
+
+            <div
+                class="font-mincho text-[#e0e0e0] text-xs md:text-[13px] leading-[2.6] font-light tracking-[0.15em] space-y-8 text-center break-words px-2 drop-shadow-md">
+                <p>
+                    伝統を受け継ぎながら、新しい文化が芽吹く高松の街。古きも新しきも、まるで夢を見るように大切に紡
+                    がれている1人ひとりの叙事詩。クラブ八咫は、その物語が語られる場でありたい。
+                    多くの方から寄せられる恩恵を受け、クラブ八咫は創業より長きに渡ってこの高松に在り続けているのだ
+                    と自負しております。品格を持ちつつ、安らぎを感じていただける雰囲気。新しい風を取り入れながら、優雅さの中に集う安ら
+                    ぎと笑顔。その雰囲気に調和した上質なインテリア。
+                    すべてがワンランク上のお客様にふさわしい、シックで落ち着いた大人の空間が、1日の終わりを優しく包
+                    み込み、新しい明日へと向かう活力となる。いつもとは違う、特別な時間。
+                    美しい生演奏の旋律にも耳を傾けながら、贅沢なひとときをお過ごしください。
+                </p>
+                <p>
+
+                </p>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="mt-24 md:mt-32 flex flex-col items-center z-20 mx-auto">
+            <p
+                class="text-[11px] tracking-[0.5em] uppercase mb-4 vertical-text text-white font-medium scroll-text-anim drop-shadow-md">
+                scroll</p>
+            <div class="w-px h-16 bg-white/20 mx-auto relative overflow-hidden drop-shadow-lg">
+                <div
+                    class="w-full h-full bg-gradient-to-b from-[#d4af37] to-transparent absolute top-0 left-0 scroll-line-anim">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections Wrapper -->
+    <div class="max-w-[1200px] mx-auto w-full relative z-10 mt-10 md:mt-24">
+
+        <!-- FEATURE Heading -->
+        <div class="text-center px-6 mb-24 md:mb-32 fade-section text-glow">
+            <h2 class="text-3xl md:text-4xl font-serif tracking-[0.4em] uppercase mb-8 text-white">Service</h2>
+            <p
+                class="font-mincho text-[#e0e0e0] text-xs md:text-[13px] leading-loose tracking-[0.1em] font-light drop-shadow-md">
+                CLUB八咫の特長をご紹介します。他にはない、<br>
+                特別なひとときをお過ごしいただける理由がここにあります。
+            </p>
+        </div>
+
+        <!-- Section 01: Service -->
+        <section class="relative py-16 px-6 fade-section">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+                <!-- Image Left -->
+                <div class="w-full md:w-[45%] flex justify-center img-container order-1">
+                    <div
+                        class="border-[2px] md:border-[3px] border-white/90 w-[90%] md:w-full overflow-hidden shape-square-rounded shadow-2xl">
+                        <img src="../img/service.jpg" class="w-full h-auto object-cover aspect-square"
+                            alt="Service Drinks"
+                            onerror="this.src='https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80'">
+                    </div>
+                </div>
+                <!-- Text Right -->
+                <div class="w-full md:w-[55%] space-y-6 text-content order-2">
+                    <h3 class="font-serif text-4xl md:text-5xl tracking-widest text-white drop-shadow-lg">Service</h3>
+                    <h4 class="font-mincho text-base md:text-lg font-medium tracking-[0.1em] text-white pt-2">
+                        どこよりも質の高いサービス
+                    </h4>
+                    <p
+                        class="font-mincho text-white/90 text-xs md:text-sm leading-[2.4] max-w-md font-light tracking-[0.1em] drop-shadow-md">
+                        CLUB八咫はスタッフの教育とサービスの質に力を入れています。お客様が満足するサービスが店舗内全般に渡るまで、どの視点においても完璧とされるものであるからこそ、その中でも特別な気分を感じていただけるよう、1つひとつの接客を追求しています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 02: Live Music -->
+        <section class="relative py-24 px-6 fade-section">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+                <!-- Text Left -->
+                <div
+                    class="w-full md:w-[55%] space-y-6 text-content order-2 md:order-1 flex flex-col md:items-start md:text-left">
+                    <h3 class="font-serif text-3xl md:text-4xl tracking-widest text-white drop-shadow-lg">Live music</h3>
+                    <h4 class="font-mincho text-base md:text-lg font-medium tracking-[0.1em] text-white pt-2">
+                        心安らぐ生演奏の音色
+                    </h4>
+                    <p
+                        class="font-mincho text-white/90 text-xs md:text-sm leading-[2.4] max-w-md font-light tracking-[0.1em] drop-shadow-md">
+                        CLUB八咫では、毎日2ステージ、生演奏をお送りしています。生演奏のある空間はスピーカーから流れてくる音とは違い、より一層心の中にまで響き渡ります。
+                    </p>
+                </div>
+                <!-- Image Right -->
+                <div class="w-full md:w-[45%] flex justify-center img-container order-1 md:order-2">
+                    <div
+                        class="border-[2px] md:border-[3px] border-white/90 w-[90%] md:w-full overflow-hidden shape-pill-horizontal shadow-2xl">
+                        <img src="../img/music.jpg" class="w-full h-auto object-cover aspect-[4/3]"
+                            alt="Live Music Performance"
+                            onerror="this.src='https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 03: Fine Quality -->
+        <section class="relative py-16 px-6 fade-section mb-20">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+                <!-- Image Left -->
+                <div class="w-full md:w-[45%] flex justify-center img-container order-1">
+                    <div
+                        class="border-[2px] md:border-[3px] border-white/90 w-[80%] md:w-[85%] overflow-hidden shape-arch shadow-2xl">
+                        <img src="../img/space.jpg" class="w-full h-auto object-cover aspect-[3/4]" alt="Club Interior"
+                            onerror="this.src='https://images.unsplash.com/photo-1560624052-449f5ddf0c31?auto=format&fit=crop&q=80'">
+                    </div>
+                </div>
+                <!-- Text Right -->
+                <div class="w-full md:w-[55%] space-y-6 text-content order-2">
+                    <h3 class="font-serif text-4xl md:text-5xl tracking-widest text-white drop-shadow-lg">SPACE</h3>
+                    <h4 class="font-mincho text-base md:text-lg font-medium tracking-[0.1em] text-white pt-2">
+                        上質な空間
+                    </h4>
+                    <p
+                        class="font-mincho text-white/90 text-xs md:text-sm leading-[2.4] max-w-md font-light tracking-[0.1em] drop-shadow-md">
+                        CLUB八咫は、店内の装飾、ライティングなど、さまざまな面で上質な空間づくりにこだわっています。どこを見ても、どこにいても、安らげる雰囲気に浸れる上質な空間になっています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Minimal Footer (One Line / Grid Layout style) -->
+    <footer class="relative w-full bg-[#0a0a0a] z-20 overflow-hidden">
+        <div class="relative w-full overflow-hidden">
+            <img src="../img/marble-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
+            <div class="absolute inset-0 bg-black/60 z-0"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto pb-24 border-t border-white/10 pt-20 px-8 md:px-12 lg:px-24">
+
+                <div class="flex flex-col items-center text-center mb-20">
+                    <div class="flex flex-col md:flex-row items-center gap-6 mb-6">
+                        <img src="../img/logo.png" alt="Yata" class="w-auto h-12 md:h-16 lg:h-36 object-contain">
+                        <span class="hidden md:block w-[1px] h-10 bg-white/30"></span>
+                        <h2 class="text-white text-3xl md:text-4xl font-serif tracking-[0.2em] uppercase">YATA</h2>
+                    </div>
+                    <p class="text-gray-400 text-[10px] md:text-xs tracking-[0.2em] mb-4">
+                        〒104-0061 東京都中央区銀座３丁目３－１ ZOE銀座９階
+                    </p>
+                    <a href="#" class="text-white text-[10px] md:text-xs tracking-widest border-b border-white/30 pb-1 hover:border-white transition-colors">
+                        Google Mapを見る
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-0">
+                    <div class="flex gap-8 md:gap-12 lg:pr-12">
+                        <div class="flex flex-col items-center shrink-0">
+                            <span class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Contents</span>
+                            <div class="w-[1px] h-full bg-gray-800"></div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-5 w-full pt-2">
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">ブライダルフェア</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">料理＆ワイン</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">よくあるご質問</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">ウエディングプラン</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">ケーキ＆デザート</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">アクセス</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">挙式会場</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">ウエディングドレス</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">ご列席の皆様へ</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">パーティ会場</a>
+                            <a href="#" class="text-white text-[11px] tracking-widest hover:text-[#b79769]">ウエディングアイテム</a>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-8 md:gap-12 lg:pl-12 lg:border-l lg:border-white/10">
+                        <div class="flex flex-col items-center shrink-0">
+                            <span class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Reservation&amp;Contact</span>
+                            <div class="w-[1px] h-full bg-gray-800"></div>
+                        </div>
+                        <div class="w-full flex flex-col pt-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mb-10">
+                                <a href="#" class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">ブライダルフェア予約</a>
+                                <a href="#" class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">見学予約</a>
+                                <a href="#" class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">資料請求</a>
+                                <a href="#" class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">お問い合わせ</a>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <p class="text-gray-500 text-[8px] tracking-widest mb-2">ブライダルフェア・見学ご希望のお客様</p>
+                                    <p class="text-white text-xl font-serif tracking-widest mb-1">0800-919-8014</p>
+                                    <p class="text-gray-600 text-[8px] tracking-widest leading-loose">平日12:00～20:00／土日納9:00～20:00</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-[8px] tracking-widest mb-2">ご成約済み・ご列席のお客様</p>
+                                    <p class="text-white text-xl font-serif tracking-widest mb-1">050-1741-7365</p>
+                                    <p class="text-gray-600 text-[8px] tracking-widest leading-loose">平日12:00～19:00／土日納9:00～20:00<br>※祉日を除く月曜・火曜定休</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full mt-24 pt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 border-t border-white/5">
+                    <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Company</a>
+                    <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Recruit</a>
+                    <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Customer Harassment Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full bg-[#111] py-6 text-center">
+            <p class="text-white text-[9px] md:text-[10px] tracking-[0.3em] uppercase">
+                &copy; ON THE PAGE ALL RIGHTS RESERVED.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Hero Background Animation (Floating Leaf Effect)
+        gsap.to("#hero-leaf-bg", {
+            scale: 1.1,
+            duration: 15,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        gsap.to("#hero-leaf-bg", {
+            x: "2%",
+            y: "2%",
+            duration: 10,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        // Parallax Effect on Scroll
+        gsap.to("#hero-leaf-bg", {
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
+            },
+            y: "30%",
+            ease: "none"
+        });
+    </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const menuCloseBtn = document.getElementById("menu-close-btn");
+
+    if (menuBtn && menuOverlay && menuCloseBtn) {
+        function closeMenu() {
+            menuBtn.classList.remove("active");
+            menuOverlay.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            menuOverlay.classList.toggle("open");
+            document.body.style.overflow = menuOverlay.classList.contains("open") ? "hidden" : "";
+        });
+
+        menuCloseBtn.addEventListener("click", closeMenu);
+    }
+});
+</script>
+
+</body>
+
+</html>

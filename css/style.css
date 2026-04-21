@@ -1,0 +1,204 @@
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; color: #e0e0e0; }
+
+/* ── Vertical text (used by both footer and side labels) ── */
+.writing-vertical-rl {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+/* ── Custom cursor ── */
+#cursor {
+    pointer-events: none;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    z-index: 200;
+}
+#cursor-follower {
+    pointer-events: none;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    transition: left 0.12s ease, top 0.12s ease;
+    z-index: 200;
+}
+
+/* ── Typography ── */
+
+/* Display / section titles — italic Playfair (matches homepage font-serif italic) */
+.cursive-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+/* Section headings (Service, Live music, SPACE, etc.) */
+.concept-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+/* Japanese body & accent text */
+.jp-font {
+    font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+}
+
+.golden-text {
+    color: #d4af37;
+}
+
+/* ── Vertical text ── */
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+/* ── Scroll indicator animations ── */
+@keyframes scrollTextFade {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
+}
+
+@keyframes scrollLineMove {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.scroll-text-anim { animation: scrollTextFade 2s ease-in-out infinite; }
+.scroll-line-anim  { animation: scrollLineMove 2s ease-in-out infinite; }
+
+/* ── Fade section (scroll reveal) ── */
+.fade-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.fade-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Image containers ── */
+.img-container { overflow: hidden; }
+.img-container img { transition: transform 0.8s ease; }
+.img-container:hover img { transform: scale(1.04); }
+
+/* ── Text content slide-in ── */
+.text-content {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+}
+.text-content.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ── Performer card ── */
+.performer-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+.performer-name-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+}
+
+/* ── Accordion ── */
+.accordion-content { transition: height 0.5s ease-in-out; }
+
+.accordion-header.open .acc-vertical {
+    transform: rotate(90deg) !important;
+    opacity: 0;
+}
+
+/* ── Floor page backgrounds ── */
+.floor-hero-bg {
+    position: fixed;
+    inset: 0;
+    background-image: url('../img/1 (1).jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.22;
+    z-index: -2;
+    filter: brightness(0.6);
+}
+
+.floral-bg {
+    position: fixed;
+    top: 40vh;
+    left: 0;
+    width: 100%;
+    height: 150vh;
+    background-image: url('../img/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12;
+    z-index: -3;
+    filter: grayscale(40%) brightness(0.5);
+    mask-image: linear-gradient(to bottom, transparent, black 30%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%);
+}
+
+/* ── Performer page background ── */
+.piano-bg {
+    position: fixed;
+    inset: 0;
+    background-image: url('../img/1 (2).jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    z-index: -1;
+    filter: brightness(0.5) grayscale(20%);
+}
+
+/* ── Capsule cards (floor page) ── */
+.capsule-card {
+    border-radius: 200px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+@media (min-width: 768px) { .capsule-card { border-width: 3px; } }
+
+.capsule-img { transition: transform 0.8s ease; }
+.capsule-card:hover .capsule-img { transform: scale(1.05); }
+
+/* ── Room labels (floor page) ── */
+.room-title {
+    font-style: italic;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.15em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.room-desc {
+    font-size: clamp(0.7rem, 1.2vw, 0.875rem);
+    line-height: 2.4;
+    letter-spacing: 0.08em;
+    max-width: 420px;
+}
+
+/* ── Hamburger + menu overlay (shared fallback) ── */
+.menu-line { transition: all 0.3s ease-in-out; transform-origin: center; }
+.menu-btn.active .line-1 { transform: rotate(45deg) translate(4px, 0px); }
+.menu-btn.active .line-2 { opacity: 0; }
+.menu-btn.active .line-3 { transform: rotate(-45deg) translate(-4px, 0px); }
+
+#menu-overlay {
+    clip-path: circle(0% at 100% 0%);
+    transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+#menu-overlay.open { clip-path: circle(150% at 100% 0%); }
