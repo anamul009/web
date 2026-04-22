@@ -8,23 +8,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            theme: { extend: { fontFamily: {
-                serif:    ['"Playfair Display"', 'serif'],
-                mincho:   ['"Shippori Mincho B1"', 'serif'],
-                'sans-jp':['"Noto Sans JP"', 'sans-serif'],
-            }}}
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif:    ['"Playfair Display"', 'serif'],
+                        mincho:   ['"Shippori Mincho B1"', 'serif'],
+                        'sans-jp':['"Noto Sans JP"', 'sans-serif'],
+                    },
+                },
+            },
         };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
-    <link rel="stylesheet" href="../../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .menu-line { transition: all 0.3s ease-in-out; transform-origin: center; }
+        .menu-btn.active .line-1 { transform: rotate(45deg) translate(4px, 0px); }
+        .menu-btn.active .line-2 { opacity: 0; }
+        .menu-btn.active .line-3 { transform: rotate(-45deg) translate(-4px, 0px); }
+        #menu-overlay { clip-path: circle(0% at 100% 0%); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        #menu-overlay.open { clip-path: circle(150% at 100% 0%); }
+    </style>
 </head>
 
-<body class="bg-[#03080b] text-white font-serif antialiased overflow-x-hidden">
+<body class="bg-[#0d0d0d] text-white font-serif antialiased overflow-x-hidden">
     <!-- Custom Cursor -->
     <div id="cursor" class="fixed w-3 h-3 bg-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block"
         style="pointer-events: none;"></div>
@@ -32,53 +44,76 @@
         class="fixed w-10 h-10 border border-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block"
         style="pointer-events: none;"></div>
 
-    <!-- Master Background -->
-    <div class="fixed top-0 left-0 w-full h-full bg-cover bg-center opacity-20 z-[-1] filter grayscale brightness-[0.4]"
-        style="background-image: url('../../img/hero-bg.jpg');"></div>
+    <!-- Background: marble -->
+    <div class="page-marble-bg"></div>
+    <div class="page-pattern-overlay"></div>
 
-    <!-- Full Screen Menu -->
-    <div id="fullscreen-menu" class="nav-overlay">
-        <button id="close-menu-btn"
-            class="absolute top-8 right-8 md:right-12 text-white hover:text-[#d4af37] transition-colors p-2 flex items-center justify-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
-                stroke-linecap="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+    <!-- Full-screen Menu Overlay -->
+    <div id="menu-overlay" class="fixed inset-0 bg-[#f4f2ea] z-[90] flex flex-col lg:flex-row overflow-hidden">
+        <!-- Close button -->
+        <button id="menu-close-btn" class="absolute top-8 right-8 md:right-12 z-[110] flex flex-col items-center justify-center w-10 h-10 group">
+            <span class="block w-6 h-[1px] bg-[#1a1a1a] rotate-45 translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
+            <span class="block w-6 h-[1px] bg-[#1a1a1a] -rotate-45 -translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
         </button>
-        <div class="absolute top-8 left-8 md:left-12 w-28 md:w-64 pt-2">
-            <img src="../../img/logo.png" alt="CLUB YATA" class="w-full">
+
+        <!-- Left Pane: Image (Hidden on mobile) -->
+        <div class="hidden lg:block lg:w-1/2 h-full relative overflow-hidden">
+            <img src="../../img/1%20(3).jpg" alt="Menu Decoration" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center"></div>
+            </div>
         </div>
 
-        <ul class="text-right space-y-8 md:space-y-12 text-lg md:text-2xl tracking-[0.3em] font-light mt-12 md:mt-0">
-            <li><a href="../../index.html"
-                    class="menu-link hover:text-[#d4af37] transition-colors inline-block relative overflow-hidden group">HOME<span
-                        class="absolute bottom-0 left-0 w-full h-px bg-[#d4af37] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500"></span></a>
-            </li>
-            <li><a href="../concept.html"
-                    class="menu-link hover:text-[#d4af37] transition-colors inline-block relative overflow-hidden group">CONCEPT<span
-                        class="absolute bottom-0 left-0 w-full h-px bg-[#d4af37] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500"></span></a>
-            </li>
-            <li><a href="../floor.html"
-                    class="menu-link hover:text-[#d4af37] transition-colors inline-block relative overflow-hidden group">FLOOR<span
-                        class="absolute bottom-0 left-0 w-full h-px bg-[#d4af37] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500"></span></a>
-            </li>
-            <li><a href="../performer.html"
-                    class="menu-link hover:text-[#d4af37] transition-colors inline-block relative overflow-hidden group">PERFORMER<span
-                        class="absolute bottom-0 left-0 w-full h-px bg-[#d4af37] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500"></span></a>
-            </li>
-            <li><a href="../menu.html"
-                    class="menu-link hover:text-[#d4af37] transition-colors inline-block relative overflow-hidden group">MENU<span
-                        class="absolute bottom-0 left-0 w-full h-px bg-[#d4af37] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500"></span></a>
-            </li>
-            <li><a href="../contact.html"
-                    class="menu-link hover:text-[#d4af37] transition-colors inline-block relative overflow-hidden group">CONTACT US<span
-                        class="absolute bottom-0 left-0 w-full h-px bg-[#d4af37] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500"></span></a>
-            </li>
-        </ul>
+        <!-- Right Pane: Links -->
+        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center px-8 md:px-24 py-32 overflow-y-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-2xl">
+                <div class="space-y-4">
+                    <a href="../../index.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Home</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="../concept.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Concept</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="../floor.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Floor</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="../menu.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Menu</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+                <div class="space-y-4">
+                    <a href="../performer.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Performer</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="../notice.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Notice</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">EC</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="../contact.html" class="group flex items-center justify-between border-b border-gray-300 pb-4 text-[#8c734b]">
+                        <span class="text-sm tracking-widest font-serif font-bold uppercase">Contact</span>
+                        <span class="w-6 h-6 rounded-full border border-[#8c734b] flex items-center justify-center text-[10px] group-hover:bg-[#8c734b] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-16 flex flex-wrap gap-x-8 gap-y-4">
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">資料請求</a>
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">お問い合わせ</a>
+                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">よくあるご質問</a>
+            </div>
+        </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation Logo (Left) -->
     <nav class="absolute z-50 top-0 w-full px-8 md:px-12 py-8 flex justify-between items-start pointer-events-none">
         <div class="w-28 md:w-64 pointer-events-auto">
             <a href="../../index.html">
@@ -86,34 +121,48 @@
             </a>
         </div>
     </nav>
-    <button id="menu-btn" class="fixed z-50 top-8 right-8 md:right-12 flex flex-col gap-[6px] p-2 group">
-        <span class="w-8 h-[1px] bg-white group-hover:bg-[#d4af37] transition-colors"></span>
-        <span class="w-8 h-[1px] bg-white group-hover:bg-[#d4af37] transition-colors"></span>
-    </button>
+    <!-- Hamburger & Order Now (Right) -->
+    <nav class="fixed top-0 right-0 z-50 flex items-center p-5 md:p-8 md:pr-12 md:pt-10 pointer-events-auto">
+        <a href="../contact.html" class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-[#856d47]">
+            Order Now
+        </a>
+        <div class="flex items-center ml-2">
+            <div class="w-1 h-1 rounded-full bg-[#b79769]"></div>
+            <div class="w-6 md:w-10 h-[1px] bg-[#b79769]"></div>
+        </div>
+        <button id="mobile-menu-btn" class="menu-btn flex items-center space-x-[5px] ml-4 transition-opacity duration-300 hover:opacity-80 focus:outline-none z-50 relative cursor-pointer" aria-label="Toggle Menu">
+            <span class="menu-line line-1 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+            <span class="menu-line line-2 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+            <span class="menu-line line-3 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+        </button>
+    </nav>
 
     <!-- Main Content -->
     <main class="relative pt-48 pb-32 px-6">
         <div class="max-w-3xl mx-auto space-y-12 fade-section">
             <div class="space-y-4">
-                <span class="font-serif text-[#d4af37] tracking-widest">2024.10.20</span>
-                <h1 class="text-3xl md:text-5xl font-light tracking-wide leading-tight jp-font">秋の限定・響ブレンドカクテル開始</h1>
+                <p class="text-gray-300 text-[11px] tracking-[0.22em] flex items-center">
+                    <span class="w-6 h-[0.5px] bg-gray-300 mr-3"></span>CLUB YATA — NOTICE
+                </p>
+                <span class="font-serif text-[#b79769] tracking-widest text-sm">2024.10.20</span>
+                <h1 class="text-3xl md:text-5xl font-mincho font-light tracking-[0.1em] leading-tight">秋の限定・響ブレンドカクテル開始</h1>
             </div>
 
-            <div class="w-12 h-px bg-[#d4af37]/50"></div>
+            <div class="w-12 h-px bg-[#b79769]/50"></div>
 
-            <div class="jp-font text-white/80 leading-loose tracking-widest space-y-8 font-light">
+            <div class="font-mincho text-white/90 leading-loose tracking-[0.08em] space-y-8 font-light">
                 <p>サントリー・ブレンデッドウイスキー「響」をベースにした、秋限定のオリジナル・カクテルを本日よりご提供いたします。</p>
-                
+
                 <div class="bg-white/5 p-8 rounded-2xl border border-white/10 space-y-6">
-                    <h2 class="text-[#d4af37] text-lg mb-4">■ 秋のスペシャルメニュー</h2>
-                    
+                    <h2 class="text-[#b79769] text-lg mb-4 font-mincho font-light tracking-[0.1em]">■ 秋のスペシャルメニュー</h2>
+
                     <div class="space-y-6">
                         <div class="border-b border-white/10 pb-4">
-                            <h3 class="text-white font-medium mb-2">Autumn Crimson Blossom</h3>
+                            <h3 class="text-white font-light tracking-[0.1em] mb-2">Autumn Crimson Blossom</h3>
                             <p class="text-sm">響 JAPANESE HARMONY にカシスと少量のクランベリーを合わせた、秋の紅葉をイメージした一杯。フルーティーながらも響の深みを感じられます。</p>
                         </div>
                         <div class="pb-4">
-                            <h3 class="text-white font-medium mb-2">Maple Old Fashioned</h3>
+                            <h3 class="text-white font-light tracking-[0.1em] mb-2">Maple Old Fashioned</h3>
                             <p class="text-sm">メープルシロップの優しい甘みが響の華やかな香りを引き立てます。落ち葉の舞う秋の夜にぴったりの、クラシックながらも新しい味わいです。</p>
                         </div>
                     </div>
@@ -123,16 +172,16 @@
             </div>
 
             <div class="pt-12">
-                <a href="../notice.html" class="inline-flex items-center gap-4 text-white text-[10px] tracking-[0.4em] uppercase hover:text-[#d4af37] transition-colors group">
-                    <span class="w-8 h-[1px] bg-white/50 group-hover:bg-[#d4af37] group-hover:w-12 transition-all"></span> back to list
+                <a href="../notice.html" class="inline-flex items-center gap-4 text-white text-[10px] tracking-[0.4em] uppercase hover:text-[#b79769] transition-colors group">
+                    <span class="w-8 h-[1px] bg-white/50 group-hover:bg-[#b79769] group-hover:w-12 transition-all"></span> back to list
                 </a>
             </div>
         </div>
     </main>
 
-    <!-- Footer snippet -->
-    <footer class="relative z-10 w-full px-6 md:px-[6%] py-12 md:py-20 bg-[#03080b]/90 border-t border-white/10">
-        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-4 text-center md:text-left jp-font font-light tracking-widest text-[#e0e0e0] text-[10px] md:text-xs leading-loose">
+    <!-- Footer -->
+    <footer class="relative z-10 w-full px-6 md:px-[6%] py-12 md:py-20 bg-[#0d0d0d]/90 border-t border-white/10">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-4 text-center md:text-left font-mincho font-light tracking-widest text-white/70 text-[10px] md:text-xs leading-loose">
             <div class="flex-shrink-0">
                 <a href="../../index.html" class="block w-32 md:w-44 lg:w-56">
                     <img src="../../img/logo.png" alt="CLUB YATA Logo" class="w-full h-auto">
@@ -152,10 +201,10 @@
                 <div class="mb-4 md:mb-0 text-center md:text-right">
                     <p class="uppercase text-[9px] mb-1">Telephone :</p>
                     <p class="font-serif text-sm md:text-base tracking-widest whitespace-nowrap">
-                        <a href="tel:0878227567" class="hover:text-[#d4af37] transition-colors">087-822-7567</a>
+                        <a href="tel:0878227567" class="hover:text-[#b79769] transition-colors">087-822-7567</a>
                     </p>
                 </div>
-                <div class="mt-auto pt-6 text-[9px] text-[#e0e0e0]/50 uppercase font-serif">
+                <div class="mt-auto pt-6 text-[9px] text-white/30 uppercase font-serif">
                     © 2024 CLUB YATA . Privacy & Policy
                 </div>
             </div>
@@ -163,5 +212,28 @@
     </footer>
 
     <script src="../../js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const menuCloseBtn = document.getElementById("menu-close-btn");
+
+    if (menuBtn && menuOverlay && menuCloseBtn) {
+        function closeMenu() {
+            menuBtn.classList.remove("active");
+            menuOverlay.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            menuOverlay.classList.toggle("open");
+            document.body.style.overflow = menuOverlay.classList.contains("open") ? "hidden" : "";
+        });
+
+        menuCloseBtn.addEventListener("click", closeMenu);
+    }
+});
+</script>
 </body>
 </html>
