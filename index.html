@@ -79,13 +79,23 @@
             text-orientation: mixed;
         }
 
-        /* Nav — always transparent */
+        /* Nav — always transparent but smaller on mobile to avoid overlap */
         nav.sticky {
             background: transparent !important;
             backdrop-filter: none !important;
             border-bottom: none !important;
-            padding-top: 1.2rem !important;
-            padding-bottom: 1.2rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem !important;
+            }
+            .order-now-btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 9px !important;
+            }
         }
 
         /* Animated arc for scroll indicator */
@@ -256,9 +266,9 @@
         </div>
     </div>
 
-    <nav class="fixed top-0 right-0 z-50 flex items-center p-5 md:p-8 md:pr-12 md:pt-10">
+    <nav class="fixed top-0 right-0 z-[100] flex items-center p-5 md:p-8 md:pr-12 md:pt-10 transition-all duration-300">
         <a href="#"
-            class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-brand-goldHover">
+            class="order-now-btn bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-brand-goldHover shadow-lg">
             Order Now
         </a>
 
@@ -268,7 +278,7 @@
         </div>
 
         <button id="mobile-menu-btn"
-            class="menu-btn flex items-center space-x-[5px] ml-4 transition-opacity duration-300 hover:opacity-80 focus:outline-none z-50 relative cursor-pointer"
+            class="menu-btn flex items-center space-x-[5px] ml-4 transition-opacity duration-300 hover:opacity-80 focus:outline-none z-[101] relative cursor-pointer"
             aria-label="Toggle Menu">
             <span class="menu-line line-1 w-[1px] h-7 bg-brand-light block"></span>
             <span class="menu-line line-2 w-[1px] h-7 bg-brand-light block"></span>
@@ -314,13 +324,13 @@
             <div class="text-center">
                 <p class="text-gray-300 text-[11px] tracking-[0.22em] mb-4 flex items-center justify-center">
                     <span class="w-4 h-[0.5px] bg-gray-400 mr-3"></span>
-                    「東京 銀座」で叶える貸切結婚式場
+                    秘められた、至福の刻（とき）を。
                 </p>
                 <h2 class="text-white text-xl font-mincho tracking-[0.2em] leading-[2] mb-4">
-                    ここにしかない 秘密の場所<br>今 時が動きだす
+                    岡山の中心で、洗練された静寂と極上の一杯に酔いしれる。<br>大人のための隠れ家サードプレイス。
                 </h2>
                 <p class="text-gray-400 text-[10px] uppercase tracking-[0.18em] leading-loose">
-                    A Secret Place Like No Other<br>Tokyo ginza private wedding
+                    An exclusive sanctuary in Okayama where refined atmosphere meets the perfect pour.
                 </p>
             </div>
         </div>
@@ -342,16 +352,14 @@
                 <div class="max-w-[280px] md:max-w-[360px] lg:max-w-lg">
                     <p class="text-gray-300 text-[11px] md:text-[13px] tracking-[0.22em] mb-5 flex items-center">
                         <span class="w-4 h-[0.5px] bg-gray-400 mr-3"></span>
-                        「東京 銀座」で叶える貸切結婚式場
+                        秘められた、至福の刻（とき）を。
                     </p>
                     <h2
                         class="text-white text-lg md:text-2xl lg:text-4xl font-mincho tracking-[0.25em] leading-[2] mb-6">
-                        ここにしかない 秘密の場所<br>
-                        今 時が動きだす
+                        岡山の中心で、洗練された静寂と極上の一杯に酔いしれる。<br>大人のための隠れ家サードプレイス。
                     </h2>
                     <p class="text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.22em] leading-loose">
-                        A Secret Place Like No Other Time Begins to Flow<br>
-                        Tokyo ginza private wedding
+                        An exclusive sanctuary in Okayama where refined atmosphere meets the perfect pour.
                     </p>
                 </div>
             </div>
@@ -370,16 +378,16 @@
         -->
 
         <!-- ── SCROLL DOWN — bottom-right, circular badge ── -->
-        <div class="absolute bottom-8 right-8 z-20 flex items-center gap-3">
+        <div class="absolute bottom-8 right-6 md:right-8 z-20 flex items-center gap-3">
             <span class="text-white/50 text-[9px] tracking-[0.35em] uppercase writing-vertical-rl">Scroll Down</span>
-            <div class="relative w-14 h-14 flex-shrink-0">
+            <div class="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
                 <svg class="w-full h-full" style="transform: rotate(-90deg);" viewBox="0 0 56 56" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <circle cx="28" cy="28" r="26" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" />
                     <circle cx="28" cy="28" r="26" stroke="#b79769" stroke-width="0.8" stroke-dasharray="163"
                         stroke-dashoffset="163" style="animation: arcDraw 2.4s ease-in-out infinite;" />
                 </svg>
-                <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4" viewBox="0 0 16 16"
+                <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4" viewBox="0 0 16 16"
                     fill="none">
                     <path d="M8 2v10M3 8l5 5 5-5" stroke="rgba(255,255,255,0.55)" stroke-width="0.9"
                         stroke-linecap="round" stroke-linejoin="round" />
@@ -427,26 +435,19 @@
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-24">
                 <h2
                     class="text-white text-3xl md:text-4xl lg:text-5xl font-mincho leading-[1.9] tracking-[0.18em] shrink-0">
-                    至極の空間で<br>誰もがよろこぶ<br>大人のおもてなしを。
+                    現代に息づく、<br>美意識の極致。
                 </h2>
 
                 <div
                     class="text-gray-300 text-xs md:text-sm leading-[2.8] tracking-[0.1em] font-light max-w-2xl lg:mt-4">
                     <p class="mb-8">
-                        銀座駅徒歩3分、好アクセスとこだわりぬいた料理で叶える<br>
-                        最高級のおもてなし
-                    </p>
-                    <p class="mb-8">
-                        これまで知る人ぞ知る会員制レストランとして提供されてきた<br>
-                        サービスと空間を独占。<br>
-                        洗練された雰囲気の中で憧れを叶える上質ウエディングが<br>
-                        2024年11月「ZOE銀座」にグランドオープン。
+                        Club Yata（クラブ 弥太）は、本物を知る大人のための聖域です。<br>
+                        讃岐の豊かな情緒と岡山のモダンな感性が交差するこの場所で、<br>
+                        日常の喧騒を離れた特別なひとときをご提供いたします。
                     </p>
                     <p>
-                        抜け感のある洗練されたチャペルや、<br>
-                        上質な木目と光り輝く大理石の調和が美しいパーティールームなど。<br>
-                        限られたメンバーのみ入ることのできる特別な空間が<br>
-                        組数限定でウエディングステージとしてご利用いただけます。
+                        グラスの重み、柔らかな灯り、そして心に響く会話。<br>
+                        そのすべてが、比類なき贅沢な夜を演出します。
                     </p>
                 </div>
             </div>
@@ -478,9 +479,7 @@
                     FLOOR INTRODUCTION
                 </h2>
                 <p class="text-brand-gold text-[10px] md:text-xs tracking-[0.15em] leading-relaxed max-w-lg">
-                    This special space, which only a limited number of members are allowed to<br
-                        class="hidden md:block">
-                    enter, can be used as a wedding stage.
+                    This special space, which only a limited number of members are allowed to enter.
                 </p>
             </div>
 
@@ -496,17 +495,19 @@
                     </div>
 
                     <div class="flex flex-col justify-center pt-8 md:pt-16">
-                        <span class="text-gray-500 text-[10px] md:text-xs tracking-widest mb-6 block">挙式会場</span>
+                        <span class="text-gray-500 text-[10px] md:text-xs tracking-widest mb-6 block">極上の隠れ家</span>
 
                         <h3 class="text-[#1a1a1a] text-xl md:text-2xl font-serif leading-[1.8] tracking-[0.15em] mb-8">
-                            シンプル×ミニマルに<br>
-                            あつらえたチャペル
+                            洗練を極めた、静寂の隠れ家
                         </h3>
 
                         <p class="text-gray-600 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-12 max-w-sm">
-                            華美すぎる装飾はあえて引き算し、抜け感<br>
-                            のある洗練された空間を演出。宗教色がな<br>
-                            いデザインのため和装人前式も案内可能。
+                            シンプル × ミニマルに<br>
+                            誂（あつら）えたカウンター<br>
+                            華美すぎる装飾はあえて「引き算」し、抜け感<br>
+                            のある洗練された空間を演出。<br>
+                            伝統と現代が交差するデザインのため、<br>
+                            和洋に縛られない至高の一杯をご案内。
                         </p>
 
                         <a href="#"
@@ -536,18 +537,19 @@
                     </div>
 
                     <div class="flex flex-col justify-center pt-8 md:pt-16">
-                        <span class="text-gray-500 text-[10px] md:text-xs tracking-widest mb-6 block">パーティ会場</span>
+                        <span class="text-gray-500 text-[10px] md:text-xs tracking-widest mb-6 block">奏の空間</span>
 
                         <h3 class="text-[#1a1a1a] text-xl md:text-2xl font-serif leading-[1.8] tracking-[0.15em] mb-8">
-                            上質な木目と光り輝く<br>
-                            大理石の調和が美しい<br>
-                            パーティ会場
+                            響き合う、素材と旋律
                         </h3>
 
                         <p class="text-gray-600 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-12 max-w-sm">
-                            窓から降り注ぐ自然光が開放的な空間と大<br>
-                            人上質な雰囲気が花嫁の魅力を最大限引き<br>
-                            立てる。
+                            上質な木目と光り輝く<br>
+                            大理石の調和が美しい<br>
+                            極上のラウンジ。<br>
+                            柔らかな光に包まれた開放的な空間と<br>
+                            大人上質な雰囲気が、奏でられる音色を<br>
+                            最大限に引き立てる。
                         </p>
 
                         <a href="#"
@@ -654,9 +656,7 @@
                     class="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif tracking-[0.15em] mb-2 md:mb-4">
                     EXQUISITE MENU
                 </h2>
-                <p class="text-[#b79769] text-[10px] md:text-xs tracking-[0.1em] font-serif italic">
-                    French cuisine meets Japanese sensibilities
-                </p>
+
             </div>
         </div>
 
@@ -670,34 +670,33 @@
                     <div class="flex flex-col items-center mr-8 md:mr-12 shrink-0">
                         <span
                             class="text-white text-[10px] tracking-[0.2em] font-serif writing-vertical-rl rotate-180 mb-6">
-                            Cuisine & Wine
+                            Liquid Artistry
                         </span>
                         <div class="w-[1px] h-[150px] bg-gray-700"></div>
                     </div>
 
                     <div class="flex flex-col pt-8">
-                        <span class="text-gray-400 text-[10px] md:text-xs tracking-widest mb-6 block">料理＆ワイン</span>
+                        <span class="text-gray-400 text-[10px] md:text-xs tracking-widest mb-6 block">巨匠が描く、記憶の断片。</span>
 
                         <h3 class="text-white text-lg md:text-2xl font-serif leading-[1.8] tracking-[0.15em] mb-8">
-                            フレンチの巨匠が仕上げる、<br>
-                            ゲストの記憶に残る本物の味
+                            匠の技が昇華させる、<br>本物の美酒と美食。
                         </h3>
 
                         <p
                             class="text-gray-400 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-6 max-w-[400px] font-light">
-                            フランス料理の技法エスプリで、<br>
-                            その時期に一番美味しい旬の食材を国内外から厳選し、<br>
-                            素材一つひとつの持ち味を最大限に引き出した<br>
-                            3つ星店で経験を積んだシェフ監修のお料理。
+                            希少なジャパニーズウイスキーから、<br>
+                            旬の素材を活かしたビスポーク・カクテルまで、<br>
+                            当店のメニューはまさに「流動する芸術」の結晶です。
                         </p>
 
                         <p
                             class="text-gray-400 text-[10px] md:text-xs leading-[2.5] tracking-[0.1em] mb-12 max-w-[400px] font-light">
-                            温度や鮮度、見た目にまでこだわり抜いた、<br>
-                            至極の逸品で大人のおもてなしを。
+                            一杯一杯を緻密なバランスで仕上げ、<br>
+                            地元の風味と国際的なスタンダードが調和する<br>
+                            至福のひとときを捧げます。
                         </p>
 
-                        <a href="#"
+                        <a href="pages/menu.html"
                             class="group inline-flex items-center border-b border-gray-500 pb-2 w-max text-white text-[10px] tracking-[0.2em] uppercase transition hover:border-white">
                             VIEW MORE
                             <span
@@ -709,7 +708,7 @@
                 <div
                     class="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-20 -mt-32 md:-mt-48 lg:-mt-[250px] pointer-events-none">
 
-                    <img src="img/plate.jpg" alt="Plate of food"
+                    <img src="img/plate.png" alt="Plate of food"
                         class="w-[250px] md:w-[400px] lg:w-[500px] xl:w-[550px] h-auto object-contain drop-shadow-2xl pointer-events-auto">
                 </div>
 
@@ -807,8 +806,11 @@
 
             <!-- Right side patterned background mask -->
             <div class="absolute top-0 right-0 w-[80%] md:w-[60%] lg:w-[50%] h-full pointer-events-none"
-                style="background-color: #917b56; -webkit-mask-image: url('img/pattern2.png'); mask-image: url('img/pattern2.png'); -webkit-mask-size: clamp(270px, 37.5vw, 528px) auto; mask-size: clamp(270px, 37.5vw, 528px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 0.7;">
+                style="background-color: #917b56; -webkit-mask-image: url('img/pattern2.png'); mask-image: url('img/pattern2.png'); -webkit-mask-size: clamp(270px, 37.5vw, 528px) auto; mask-size: clamp(270px, 37.5vw, 528px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 0.35;">
             </div>
+
+            <!-- Dark gradient overlay for better text contrast on mobile -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent md:hidden pointer-events-none"></div>
 
             <div
                 class="max-w-[1920px] mx-auto relative w-full h-full flex flex-col md:flex-row items-center min-h-[60vh] md:min-h-[80vh]">
@@ -938,7 +940,7 @@
                 <!-- Notice Item 3 -->
                 <div class="flex gap-6 items-start group">
                     <a href="pages/notices/notice-20241020.html" class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden block">
-                        <img src="img/plate.jpg" alt="Notice 3"
+                        <img src="img/plate.png" alt="Notice 3"
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </a>
                     <div class="flex-1 border-b border-white/20 pb-8">
