@@ -25,16 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Fade sections (IntersectionObserver) ──
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.05 });
 
     document.querySelectorAll('.fade-section').forEach(el => fadeObserver.observe(el));
 
     // ── Text content slide-in ──
     const textObserver = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.05 });
 
     document.querySelectorAll('.text-content').forEach(el => textObserver.observe(el));
+
+    // ── Nav Scroll Effect ──
+    const mainNav = document.querySelector('nav.fixed');
+    if (mainNav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        });
+    }
 
     // ── Accordion ──
     document.querySelectorAll('.accordion-header').forEach(header => {

@@ -145,6 +145,15 @@
             transform: scale(1);
         }
 
+        /* Nav background on scroll */
+        nav.scrolled {
+            background-color: rgba(10, 10, 10, 0.9) !important;
+            backdrop-filter: blur(8px);
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
         .reveal-delay-200 {
             transition-delay: 200ms !important;
         }
@@ -838,9 +847,9 @@
 
                     <!-- Text Overlay Content -->
                     <div
-                        class="w-full md:w-[50%] lg:w-[45%] relative z-30 flex flex-col items-start mt-12 md:mt-0 px-8 md:px-0 md:-ml-12 lg:-ml-[8%]">
+                        class="w-full md:w-[50%] lg:w-[45%] relative z-30 flex flex-col items-start mt-12 md:mt-0 px-8 md:px-0 md:-ml-8 lg:-ml-[8%]">
                         <h2 class="text-white font-serif tracking-[0.1em] mb-4 reveal reveal-delay-200"
-                            style="font-size: clamp(2.5rem, 6vw, 6.5rem); line-height: 1;">
+                            style="font-size: clamp(2rem, 8vw, 6.5rem); line-height: 1.1;">
                             RESERVATION PLAN
                         </h2>
 
@@ -1007,7 +1016,7 @@
 
             <div class="flex justify-center w-full">
                 <div class="flex gap-8 md:gap-12 w-full max-w-3xl">
-                    <div class="flex flex-col items-center shrink-0">
+                    <div class="hidden md:flex flex-col items-center shrink-0">
                         <span
                             class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Reservation&Contact</span>
                         <div class="w-[1px] h-full bg-gray-800"></div>
@@ -1016,28 +1025,14 @@
                     <div class="w-full flex flex-col pt-2">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mb-10">
                             <a href="#"
-                                class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">ブライダルフェア予約</a>
+                                class="bg-[#b79769] text-white text-[11px] tracking-[0.2em] py-4 text-center hover:brightness-110 uppercase">RESERVATION</a>
                             <a href="#"
-                                class="bg-[#8c734b] text-white text-[11px] tracking-widest py-4 text-center hover:brightness-110">見学予約</a>
-                            <a href="#"
-                                class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">資料請求</a>
-                            <a href="#"
-                                class="border border-white/30 text-white text-[11px] tracking-widest py-4 text-center hover:bg-white/5">お問い合わせ</a>
+                                class="border border-white/30 text-white text-[11px] tracking-[0.2em] py-4 text-center hover:bg-white/5 uppercase">INQUIRY</a>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <p class="text-gray-500 text-[8px] tracking-widest mb-2">ブライダルフェア・見学ご希望のお客様</p>
-                                <p class="text-white text-xl font-serif tracking-widest mb-1">0800-919-8014</p>
-                                <p class="text-gray-600 text-[8px] tracking-widest leading-loose">
-                                    平日12:00～20:00／土日祝9:00～20:00</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 text-[8px] tracking-widest mb-2">ご成約済み・ご列席のお客様</p>
-                                <p class="text-white text-xl font-serif tracking-widest mb-1">050-1741-7365</p>
-                                <p class="text-gray-600 text-[8px] tracking-widest leading-loose">
-                                    平日12:00～19:00／土日祝9:00～20:00<br>※祝日を除く月曜・火曜定休</p>
-                            </div>
+                        <div class="flex flex-col items-center text-center">
+                            <p class="text-gray-500 text-[10px] tracking-widest mb-2 uppercase">For more inquiry contact</p>
+                            <p class="text-white text-2xl md:text-3xl font-serif tracking-widest">000-0000-0000</p>
                         </div>
                     </div>
                 </div>
@@ -1105,8 +1100,18 @@
         const revealEls = document.querySelectorAll('.reveal, .reveal-clip');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.05 });
         revealEls.forEach(el => revealObserver.observe(el));
+
+        // Nav Scroll Effect
+        const mainNav = document.querySelector('nav.fixed');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        });
     </script>
     <script>
         // Custom cursor

@@ -139,7 +139,7 @@ body { overflow-x: hidden; color: #e0e0e0; }
 .page-pattern-overlay {
     position: fixed;
     inset: 0;
-    background-image: url('../img/pattern-05.png');
+    /* background-image: url('../img/pattern2.png'); */
     background-repeat: repeat;
     background-size: clamp(180px, 25vw, 352px) auto;
     mix-blend-mode: multiply;
@@ -163,7 +163,7 @@ body { overflow-x: hidden; color: #e0e0e0; }
 .floral-bg {
     position: fixed;
     inset: 0;
-    background-image: url('../img/pattern-05.png');
+    /* background-image: url('../img/pattern2.png'); */
     background-repeat: repeat;
     background-size: clamp(180px, 25vw, 352px) auto;
     mix-blend-mode: multiply;
@@ -285,3 +285,12 @@ body { overflow-x: hidden; color: #e0e0e0; }
     transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
 #menu-overlay.open { clip-path: circle(150% at 100% 0%); }
+
+/* ── Navigation Scrolled State ── */
+nav.scrolled {
+    background-color: rgba(10, 10, 10, 0.9) !important;
+    backdrop-filter: blur(8px);
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
