@@ -288,9 +288,6 @@ body { overflow-x: hidden; color: #e0e0e0; }
 
 /* ── Navigation Scrolled State ── */
 nav.scrolled {
-    background-color: rgba(10, 10, 10, 0.9) !important;
-    backdrop-filter: blur(8px);
     padding-top: 0.75rem !important;
     padding-bottom: 0.75rem !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }

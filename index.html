@@ -73,6 +73,10 @@
             transform: rotate(-45deg) translate(-4px, 0px);
         }
 
+        .menu-btn.active .menu-line {
+            background-color: #1a1a1a !important;
+        }
+
         /* Vertical text utility for the Scroll Down indicator */
         .writing-vertical-rl {
             writing-mode: vertical-rl;
@@ -147,11 +151,8 @@
 
         /* Nav background on scroll */
         nav.scrolled {
-            background-color: rgba(10, 10, 10, 0.9) !important;
-            backdrop-filter: blur(8px);
             padding-top: 0.75rem !important;
             padding-bottom: 0.75rem !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .reveal-delay-200 {
@@ -190,14 +191,6 @@
     <!-- Full-screen Menu Overlay -->
     <div id="menu-overlay" class="fixed inset-0 bg-[#f4f2ea] z-[90] flex flex-col lg:flex-row overflow-hidden">
 
-        <!-- Close button -->
-        <button id="menu-close-btn"
-            class="absolute top-8 right-8 md:right-12 z-[110] flex flex-col items-center justify-center w-10 h-10 group">
-            <span
-                class="block w-6 h-[1px] bg-[#1a1a1a] rotate-45 translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
-            <span
-                class="block w-6 h-[1px] bg-[#1a1a1a] -rotate-45 -translate-y-[0.5px] transition-all duration-300 group-hover:bg-[#8c734b]"></span>
-        </button>
 
         <!-- Left Pane: Image (Hidden on mobile) -->
         <div class="hidden lg:block lg:w-1/2 h-full relative overflow-hidden">
@@ -595,7 +588,7 @@
             <div class="absolute w-full px-4 md:px-10 z-[5] reveal reveal-delay-200" style="top: 48%;">
                 <h2 class="font-serif leading-none tracking-[0.03em] text-[#917b56] text-center w-full"
                     style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
-                    RECOMMEND BRIDAL FAIR
+                    RESERVATION PROCESS
                 </h2>
             </div>
 
@@ -604,7 +597,7 @@
                 style="top: 48%; clip-path: inset(0 calc(50% - clamp(113.5px, 15.75vw, 227px)) 0 calc(50% - clamp(113.5px, 15.75vw, 227px)));">
                 <h2 class="font-serif leading-none tracking-[0.03em] text-white text-center w-full"
                     style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
-                    RECOMMEND BRIDAL FAIR
+                    RESERVATION PROCESS
                 </h2>
             </div>
 
@@ -626,9 +619,9 @@
                 <div class="flex justify-center md:items-end md:pr-[18vw]">
                     <p
                         class="text-[#333333] text-[11px] md:text-sm tracking-[0.2em] leading-[2.8] font-light reveal text-center md:text-left">
-                        結婚式を考え出したら<br>
-                        まずはブライダルフェアに<br>
-                        ご参加ください。
+                        上質なひとときを<br>
+                        まずは、ご予約・お問い合わせください。<br>
+                        心よりお待ちしております。
                     </p>
                 </div>
 
@@ -637,7 +630,7 @@
                     <div class="flex items-center reveal reveal-delay-200">
                         <a href="#"
                             class="bg-[#8c734b] text-white text-[11px] tracking-widest px-8 py-5 transition hover:bg-[#7a6440]">
-                            おすすめのブライダルフェア
+                            RESERVATION
                         </a>
                         <div class="hidden lg:flex items-center">
                             <div class="w-6 h-[1px] bg-[#8c734b]"></div>
@@ -850,24 +843,24 @@
                         class="w-full md:w-[50%] lg:w-[45%] relative z-30 flex flex-col items-start mt-12 md:mt-0 px-8 md:px-0 md:-ml-8 lg:-ml-[8%]">
                         <h2 class="text-white font-serif tracking-[0.1em] mb-4 reveal reveal-delay-200"
                             style="font-size: clamp(2rem, 8vw, 6.5rem); line-height: 1.1;">
-                            RESERVATION PLAN
+                            CONCEPT PLAN
                         </h2>
 
                         <span
                             class="block text-white text-[10px] md:text-xs tracking-widest mb-6 reveal reveal-delay-200">
-                            ウエディングプラン
+                            コンセプトプラン
                         </span>
 
                         <p
                             class="text-white text-[11px] md:text-sm tracking-[0.2em] leading-loose mb-12 reveal reveal-delay-400">
-                            最適な料金プランをご提案します
+                            八咫が提案する特別なコンセプト
                         </p>
 
                         <!-- White button block with tiny gold line -->
                         <div class="flex items-center reveal reveal-delay-600 group">
                             <a href="#"
                                 class="bg-white text-[#917b56] text-[10px] lg:text-[11px] tracking-[0.2em] px-10 py-5 transition-colors duration-300 hover:bg-gray-100 min-w-[200px] md:min-w-[280px] text-center">
-                                ウエディングプランを見る
+                                VIEW DETAILS
                             </a>
                             <div class="flex items-center -ml-4 pointer-events-none">
                                 <div class="w-12 lg:w-20 h-[1px] bg-[#917b56]"></div>
@@ -1065,7 +1058,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             const menuBtn = document.getElementById("mobile-menu-btn");
             const menuOverlay = document.getElementById("menu-overlay");
-            const menuCloseBtn = document.getElementById("menu-close-btn");
 
             function closeMenu() {
                 menuBtn.classList.remove("active");
@@ -1079,7 +1071,6 @@
                 document.body.style.overflow = menuOverlay.classList.contains("open") ? "hidden" : "";
             });
 
-            menuCloseBtn.addEventListener("click", closeMenu);
         });
 
         // Sync all videos on the page to play at the exact same time
