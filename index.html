@@ -297,7 +297,7 @@
         <div class="hidden md:block absolute left-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden"
             style="width: 256px;">
             <div class="absolute inset-0"
-                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: auto 150%; mix-blend-mode: multiply; opacity: 0.2;">
+                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: auto 297%; mix-blend-mode: multiply; opacity: 0.2;">
             </div>
         </div>
 
@@ -305,7 +305,7 @@
         <div class="hidden md:block absolute right-0 top-0 bottom-0 z-0 pointer-events-none overflow-hidden"
             style="width: 256px;">
             <div class="absolute inset-0"
-                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: auto 150%; mix-blend-mode: multiply; opacity: 0.2;">
+                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: auto 297%; mix-blend-mode: multiply; opacity: 0.2;">
             </div>
         </div>
 
@@ -316,7 +316,7 @@
                 <source src="img/video.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 pointer-events-none"
-                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: 150% auto; mix-blend-mode: multiply; opacity: 0.4;">
+                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: 297% auto; mix-blend-mode: multiply; opacity: 0.4;">
             </div>
         </div>
 
@@ -414,7 +414,7 @@
             </video>
             <!-- Pattern overlay with multiply blend — top 50% only -->
             <div class="absolute top-0 left-0 right-0 h-[50%] pointer-events-none"
-                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: clamp(270px, 37.5vw, 528px) auto; mix-blend-mode: multiply; opacity: 0.45; -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); mask-image: linear-gradient(to bottom, black 70%, transparent 100%);">
+                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: clamp(535px, 74.25vw, 1045px) auto; mix-blend-mode: multiply; opacity: 0.45; -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); mask-image: linear-gradient(to bottom, black 70%, transparent 100%);">
             </div>
 
             <!-- Overall dark overlay to improve text contrast -->
@@ -469,7 +469,7 @@
             </svg>
             <!-- pattern-05 tiled inside same space, cream tone via multiply -->
             <div class="absolute inset-0"
-                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: clamp(270px, 37.5vw, 528px) auto; mix-blend-mode: multiply; opacity: 0.2;">
+                style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: clamp(535px, 74.25vw, 1045px) auto; mix-blend-mode: multiply; opacity: 0.2;">
             </div>
         </div>
 
@@ -580,12 +580,12 @@
             <!-- pattern-05 top area — intense contrast based on screenshot -->
             <div class="absolute top-0 left-0 w-full pointer-events-none z-0" style="height: 55%;">
                 <div class="absolute inset-0"
-                    style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: clamp(270px, 37.5vw, 528px) auto; opacity: 0.5;">
+                    style="background-image: url('img/pattern2.png'); background-repeat: repeat; background-size: clamp(535px, 74.25vw, 1045px) auto; opacity: 0.4;">
                 </div>
             </div>
 
             <!-- Dark title — behind photo, shows on cream/pattern areas -->
-            <div class="absolute w-full px-4 md:px-10 z-[5] reveal reveal-delay-200" style="top: 48%;">
+            <div class="absolute w-full px-4 md:px-10 z-[5] reveal reveal-delay-200" style="top: 72%;">
                 <h2 class="font-serif leading-none tracking-[0.03em] text-[#917b56] text-center w-full"
                     style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
                     RESERVATION PROCESS
@@ -594,7 +594,7 @@
 
             <!-- White title — clipped to image width only, in front of photo -->
             <div class="absolute w-full px-4 md:px-10 z-20 reveal reveal-delay-200"
-                style="top: 48%; clip-path: inset(0 calc(50% - clamp(113.5px, 15.75vw, 227px)) 0 calc(50% - clamp(113.5px, 15.75vw, 227px)));">
+                style="top: 72%; clip-path: inset(0 calc(50% - clamp(125px, 17.325vw, 249.5px)) 0 calc(50% - clamp(125px, 17.325vw, 249.5px)));">
                 <h2 class="font-serif leading-none tracking-[0.03em] text-white text-center w-full"
                     style="font-size: clamp(1.8rem, 6.5vw, 6.5rem);">
                     RESERVATION PROCESS
@@ -602,8 +602,8 @@
             </div>
 
             <!-- Couple photo — centered, fixed aspect ratio, on top -->
-            <div class="absolute top-[20%] left-1/2 -translate-x-1/2 z-10"
-                style="width: clamp(227px, 31.5vw, 454px); height: clamp(313px, 42vw, 617px);">
+            <div class="absolute top-[60%] left-1/2 -translate-x-1/2 z-10"
+                style="width: clamp(250px, 34.65vw, 499px); height: clamp(344px, 46.2vw, 679px);">
                 <div class="w-full h-full shadow-2xl overflow-hidden reveal">
                     <img src="img/yata.jpg" alt="Couple"
                         class="w-full h-full object-cover object-center reveal-scale-img">
@@ -612,7 +612,7 @@
         </div>
 
         <!-- Bottom content: Grid flanked beside photo preserving document height -->
-        <div class="w-full relative z-20 pb-32 md:pb-48 lg:pb-64" style="margin-top: clamp(-40px, -10vw, -120px);">
+        <div class="w-full relative z-20 pb-48 md:pb-64 lg:pb-[300px]" style="margin-top: clamp(80px, 15vw, 150px);">
             <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 w-full px-8 md:px-[6vw]">
 
                 <!-- Left Flank -->
@@ -808,7 +808,7 @@
 
             <!-- Right side patterned background mask -->
             <div class="absolute top-0 right-0 w-[80%] md:w-[60%] lg:w-[50%] h-full pointer-events-none"
-                style="background-color: #917b56; -webkit-mask-image: url('img/pattern2.png'); mask-image: url('img/pattern2.png'); -webkit-mask-size: clamp(270px, 37.5vw, 528px) auto; mask-size: clamp(270px, 37.5vw, 528px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 0.35;">
+                style="background-color: #917b56; -webkit-mask-image: url('img/pattern2.png'); mask-image: url('img/pattern2.png'); -webkit-mask-size: clamp(535px, 74.25vw, 1045px) auto; mask-size: clamp(535px, 74.25vw, 1045px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 0.35;">
             </div>
 
             <!-- Dark gradient overlay for better text contrast on mobile -->
@@ -982,7 +982,7 @@
 
             <!-- Pattern overlay with elegant mask effect -->
             <div class="absolute inset-0 pointer-events-none"
-                style="background-color: #000000; -webkit-mask-image: url('img/pattern2.png'); mask-image: url('img/pattern2.png'); -webkit-mask-size: clamp(270px, 37.5vw, 528px) auto; mask-size: clamp(270px, 37.5vw, 528px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 0.6;">
+                style="background-color: #000000; -webkit-mask-image: url('img/pattern2.png'); mask-image: url('img/pattern2.png'); -webkit-mask-size: clamp(535px, 74.25vw, 1045px) auto; mask-size: clamp(535px, 74.25vw, 1045px) auto; -webkit-mask-repeat: repeat; mask-repeat: repeat; opacity: 0.6;">
             </div>
 
             <div
