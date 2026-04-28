@@ -1,6 +1,6 @@
-# Yata — Wedding Venue Website
+# Yata — Private Bar saloon
 
-A luxury wedding venue website for a Tokyo-based venue, built as a pixel-perfect clone of a high-end Japanese wedding hall site.
+A luxury Private Bar saloon website for a Okayama-based venue, built as a pixel-perfect clone of a high-end Japanese bar and music site.
 
 ## Project Structure
 
