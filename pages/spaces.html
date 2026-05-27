@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OUR SPACES | CLUB YATA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif:    ['"Playfair Display"', 'serif'],
+                        mincho:   ['"Shippori Mincho B1"', 'serif'],
+                        'sans-jp':['"Noto Sans JP"', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .menu-line { transition: all 0.3s ease-in-out; transform-origin: center; }
+        .menu-btn.active .line-1 { transform: rotate(45deg) translate(4px, 0px); }
+        .menu-btn.active .line-2 { opacity: 0; }
+        .menu-btn.active .line-3 { transform: rotate(-45deg) translate(-4px, 0px); }
+        #menu-overlay { clip-path: circle(0% at 100% 0%); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        #menu-overlay.open { clip-path: circle(150% at 100% 0%); }
+        .menu-btn.active .menu-line { background-color: #1a1a1a !important; }
+    </style>
+</head>
+
+<body class="bg-[#0d0d0d] text-white font-serif antialiased overflow-x-hidden">
+    <!-- Custom Cursor -->
+    <div id="cursor" class="fixed w-3 h-3 bg-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block" style="pointer-events: none;"></div>
+    <div id="cursor-follower" class="fixed w-10 h-10 border border-[#d4af37] rounded-full mix-blend-difference z-[200] hidden md:block" style="pointer-events: none;"></div>
+
+    <div class="menu-hero-bg"></div>
+    <div class="page-pattern-overlay"></div>
+
+    <!-- Full-screen Menu Overlay -->
+    <div id="menu-overlay" class="fixed inset-0 bg-[#f4f2ea] z-[90] flex flex-col lg:flex-row overflow-hidden">
+        <div class="hidden lg:block lg:w-1/2 h-full relative overflow-hidden">
+            <img src="../img/1%20(3).jpg" alt="Menu Decoration" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/20"></div>
+        </div>
+        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center px-8 md:px-24 py-32 overflow-y-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-2xl">
+                <div class="space-y-4">
+                    <a href="../index.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Home</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="concept.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Concept</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="gallery.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Gallery</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="menu.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Menu</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+                <div class="space-y-4">
+                    <a href="performer.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Performer</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="notice.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Notice</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="https://clubyata.jp/ec/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">EC</span>
+                        <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
+                    </a>
+                    <a href="contact.html" class="group flex items-center justify-between border-b border-gray-300 pb-4 text-[#8c734b]">
+                        <span class="text-sm tracking-widest font-serif font-bold uppercase">Contact</span>
+                        <span class="w-6 h-6 rounded-full border border-[#8c734b] flex items-center justify-center text-[10px] group-hover:bg-[#8c734b] group-hover:text-white transition-colors">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Logo -->
+    <nav class="absolute z-50 top-0 w-full px-8 md:px-12 py-8 flex justify-between items-start pointer-events-none">
+        <div class="w-28 md:w-64 pointer-events-auto">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="YATA" class="w-full">
+            </a>
+        </div>
+    </nav>
+    <!-- Hamburger -->
+    <nav class="fixed top-0 right-0 z-[100] flex items-center p-5 md:p-8 md:pr-12 md:pt-10 pointer-events-auto">
+        <a href="https://clubyata.jp/ec/" target="_blank" rel="noopener noreferrer" class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-[#856d47]">
+            Order Now
+        </a>
+        <div class="flex items-center ml-2">
+            <div class="w-1 h-1 rounded-full bg-[#b79769]"></div>
+            <div class="w-6 md:w-10 h-[1px] bg-[#b79769]"></div>
+        </div>
+        <button id="mobile-menu-btn" class="menu-btn z-[101] relative flex items-center space-x-[5px] ml-4 transition-opacity duration-300 hover:opacity-80 focus:outline-none cursor-pointer" aria-label="Toggle Menu">
+            <span class="menu-line line-1 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+            <span class="menu-line line-2 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+            <span class="menu-line line-3 w-[1px] h-7 bg-[#d4c5b0] block"></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative h-screen flex flex-col justify-center px-8 md:px-[15%] text-center fade-section">
+        <div class="relative z-10 space-y-6 max-w-4xl mx-auto pt-20">
+            <p class="text-gray-300 text-[11px] tracking-[0.22em] mb-4 flex items-center justify-center">
+                <span class="w-6 h-[0.5px] bg-gray-300 mr-3"></span>CLUB YATA — OUR SPACES
+            </p>
+            <h2 class="font-serif text-5xl md:text-6xl tracking-[0.15em] text-white uppercase mb-8">Our Spaces</h2>
+            <h1 class="font-mincho text-[#b79769] text-2xl md:text-3xl font-light tracking-[0.1em] leading-[1.8] mb-8">
+                空間が、物語を紡ぐ。
+            </h1>
+            <p class="font-mincho text-white/80 text-[10px] md:text-xs font-light tracking-[0.1em] leading-[2.6] max-w-2xl mx-auto pt-4">
+                CLUB YATAは、それぞれ異なる表情を持つ2つの空間をご用意しております。<br class="hidden md:block">
+                セレモニーの厳かな静けさから、パーティーの華やかな煌めきまで、<br class="hidden md:block">
+                大切な一夜にふさわしい舞台をお選びください。
+            </p>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
+            <p class="text-[11px] tracking-[0.5em] uppercase mb-4 vertical-text text-white font-medium">scroll</p>
+            <div class="w-px h-16 bg-white/20 mx-auto relative overflow-hidden">
+                <div class="w-full h-full bg-gradient-to-b from-[#b79769] to-transparent absolute top-0 left-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ceremony Space -->
+    <section id="ceremony" class="relative fade-section">
+        <div class="w-full h-[60vh] md:h-[75vh] overflow-hidden relative">
+            <img src="../img/ceremon space.JPG" alt="Ceremony Space" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/30 to-transparent"></div>
+        </div>
+        <div class="max-w-[900px] mx-auto px-8 md:px-12 py-20 md:py-28">
+            <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+                <div class="shrink-0 flex flex-col items-start">
+                    <p class="text-[9px] tracking-[0.5em] text-[#b79769] uppercase mb-3">Space 01</p>
+                    <div class="w-8 h-px bg-[#b79769] mb-6"></div>
+                    <span class="font-mincho text-white/30 text-[10px] tracking-[0.3em] writing-vertical-rl" style="writing-mode: vertical-rl;">極上の隠れ家</span>
+                </div>
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl tracking-[0.15em] text-white mb-4">Ceremony Space</h2>
+                    <p class="font-mincho text-[#b79769] text-sm tracking-[0.1em] mb-10">洗練を極めた、静寂の隠れ家</p>
+                    <p class="font-mincho text-white/65 text-[11px] md:text-xs leading-[2.8] tracking-wider mb-10">
+                        シンプル × ミニマルに誂えたカウンター。華美すぎる装飾はあえて「引き算」し、抜け感のある洗練された空間を演出しています。伝統と現代が交差するデザインは、和洋に縛られない至高の一杯へとお客様をいざないます。<br><br>
+                        静寂に包まれたこの空間は、大切な方との特別なひとときに、これ以上ない舞台となることでしょう。柔らかな照明と上質な調度品が、非日常の贅沢な時間を演出いたします。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 text-center">
+                        <div class="border border-white/10 py-6 px-4">
+                            <p class="text-[#b79769] font-serif text-lg mb-1">〜20名</p>
+                            <p class="font-mincho text-white/40 text-[9px] tracking-widest">MAX CAPACITY</p>
+                        </div>
+                        <div class="border border-white/10 py-6 px-4">
+                            <p class="text-[#b79769] font-serif text-lg mb-1">完全個室</p>
+                            <p class="font-mincho text-white/40 text-[9px] tracking-widest">PRIVATE ROOM</p>
+                        </div>
+                        <div class="border border-white/10 py-6 px-4 col-span-2 md:col-span-1">
+                            <p class="text-[#b79769] font-serif text-lg mb-1">要予約</p>
+                            <p class="font-mincho text-white/40 text-[9px] tracking-widest">RESERVATION</p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="inline-flex items-center gap-4 bg-[#b79769] text-white text-[10px] tracking-[0.3em] uppercase px-10 py-4 hover:bg-[#856d47] transition-colors">
+                        RESERVE THIS SPACE
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-[900px] mx-auto px-8 md:px-12">
+        <div class="w-full h-px bg-white/10"></div>
+    </div>
+
+    <!-- Party Space -->
+    <section id="party" class="relative fade-section">
+        <div class="max-w-[900px] mx-auto px-8 md:px-12 py-20 md:py-28">
+            <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+                <div class="shrink-0 flex flex-col items-start">
+                    <p class="text-[9px] tracking-[0.5em] text-[#b79769] uppercase mb-3">Space 02</p>
+                    <div class="w-8 h-px bg-[#b79769] mb-6"></div>
+                    <span class="font-mincho text-white/30 text-[10px] tracking-[0.3em] writing-vertical-rl" style="writing-mode: vertical-rl;">奏の空間</span>
+                </div>
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl tracking-[0.15em] text-white mb-4">Party Space</h2>
+                    <p class="font-mincho text-[#b79769] text-sm tracking-[0.1em] mb-10">響き合う、素材と旋律</p>
+                    <p class="font-mincho text-white/65 text-[11px] md:text-xs leading-[2.8] tracking-wider mb-10">
+                        上質な木目と光り輝く大理石の調和が美しい、極上のラウンジ空間です。柔らかな光に包まれた開放的な設えと大人上質な雰囲気が、奏でられる音色を最大限に引き立てます。<br><br>
+                        パーティーや記念日、特別なお祝いの席に。華やかでありながら品格を失わない空間は、大切な方々との忘れられない夜をお約束いたします。ライブパフォーマンスとともに、至福の時間をお楽しみください。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 text-center">
+                        <div class="border border-white/10 py-6 px-4">
+                            <p class="text-[#b79769] font-serif text-lg mb-1">〜50名</p>
+                            <p class="font-mincho text-white/40 text-[9px] tracking-widest">MAX CAPACITY</p>
+                        </div>
+                        <div class="border border-white/10 py-6 px-4">
+                            <p class="text-[#b79769] font-serif text-lg mb-1">ライブあり</p>
+                            <p class="font-mincho text-white/40 text-[9px] tracking-widest">LIVE PERFORMANCE</p>
+                        </div>
+                        <div class="border border-white/10 py-6 px-4 col-span-2 md:col-span-1">
+                            <p class="text-[#b79769] font-serif text-lg mb-1">要予約</p>
+                            <p class="font-mincho text-white/40 text-[9px] tracking-widest">RESERVATION</p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="inline-flex items-center gap-4 bg-[#b79769] text-white text-[10px] tracking-[0.3em] uppercase px-10 py-4 hover:bg-[#856d47] transition-colors">
+                        RESERVE THIS SPACE
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full h-[60vh] md:h-[75vh] overflow-hidden relative">
+            <img src="../img/party space.JPG" alt="Party Space" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-[#0d0d0d]/30 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative w-full bg-transparent z-20 overflow-hidden">
+        <div class="relative z-10 max-w-7xl mx-auto pb-24 border-t border-white/10 pt-20 px-8 md:px-12 lg:px-24">
+            <div class="flex flex-col items-center text-center mb-20">
+                <div class="flex flex-col md:flex-row items-center gap-6 mb-6">
+                    <img src="../img/logo.png" alt="Yata" class="w-auto h-12 md:h-16 lg:h-36 object-contain">
+                    <span class="hidden md:block w-[1px] h-10 bg-white/30"></span>
+                    <h2 class="text-white text-3xl md:text-4xl font-serif tracking-[0.2em] uppercase">YATA</h2>
+                </div>
+                <p class="text-gray-400 text-sm md:text-base tracking-[0.2em] mb-4">岡山市北区本町 8-15本町プラザ 2F</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=岡山市北区本町+8-15本町プラザ+2F" target="_blank" rel="noopener noreferrer" class="text-white text-[10px] md:text-xs tracking-widest border-b border-white/30 pb-1 hover:border-white transition-colors">Google Mapを見る</a>
+            </div>
+            <div class="flex justify-center w-full">
+                <div class="flex gap-8 md:gap-12 w-full max-w-3xl">
+                    <div class="w-full flex flex-col pt-2">
+                        <div class="flex justify-center mb-10">
+                            <a href="https://www.instagram.com/clubyata_okayama/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 border border-white/20 text-white text-[11px] tracking-[0.2em] px-10 py-4 hover:border-[#b79769] hover:text-[#b79769] transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <p class="text-gray-500 text-[10px] tracking-widest mb-2 uppercase">For more inquiry contact</p>
+                            <a href="tel:0862302080" class="text-white text-2xl md:text-3xl font-sans tracking-widest hover:text-gray-300 transition-colors">086-230-2080</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full mt-24 pt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 border-t border-white/5">
+                <a href="company.html" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">店舗案内</a>
+                <a href="privacy.html" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="w-full bg-[#111] py-6 text-center">
+            <p class="text-white text-[9px] md:text-[10px] tracking-[0.3em] uppercase">&copy; ON THE PAGE ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("mobile-menu-btn");
+        const menuOverlay = document.getElementById("menu-overlay");
+        if (menuBtn && menuOverlay) {
+            menuBtn.addEventListener("click", () => {
+                menuBtn.classList.toggle("active");
+                menuOverlay.classList.toggle("open");
+                document.body.style.overflow = menuOverlay.classList.contains("open") ? "hidden" : "";
+            });
+        }
+    });
+    </script>
+</body>
+
+</html>

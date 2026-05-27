@@ -5,6 +5,17 @@
     const MONTH_NAMES_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const DAY_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
+    // ─── Configure availability here ───────────────────────────────────────────
+    // Add dates as "YYYY-MM-DD" strings.
+    // Sundays and past dates are always closed automatically.
+    const LIMITED_DATES = [
+        // "2026-06-07", "2026-06-14"
+    ];
+    const FULL_CLOSED_DATES = [
+        // "2026-06-01", "2026-06-08"
+    ];
+    // ───────────────────────────────────────────────────────────────────────────
+
     function init() {
         const now = new Date();
         currentYear = now.getFullYear();
@@ -72,10 +83,10 @@
             const date = new Date(year, month, d);
             const isSunday = date.getDay() === 0;
             const isPast = date < today;
-            const isClosed = isSunday || isPast;
-            const isLimited = !isClosed && d % 7 === 0;
             const pad = (n) => String(n).padStart(2, '0');
             const dataDate = `${year}-${pad(month + 1)}-${pad(d)}`;
+            const isClosed = isSunday || isPast || FULL_CLOSED_DATES.includes(dataDate);
+            const isLimited = !isClosed && LIMITED_DATES.includes(dataDate);
 
             if (isClosed) {
                 html += `<div class="text-center py-2 text-xs rounded-lg text-white/20 cursor-not-allowed select-none">${d}</div>`;

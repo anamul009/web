@@ -35,7 +35,7 @@
         /* Menu Overlay Transition */
         #menu-overlay { clip-path: circle(0% at 100% 0%); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
         #menu-overlay.open { clip-path: circle(150% at 100% 0%); }
-    
+
         .menu-btn.active .menu-line { background-color: #1a1a1a !important; }
 </style>
 
@@ -52,10 +52,10 @@
     <div class="menu-hero-bg"></div>
     <div class="page-pattern-overlay"></div>
 
-    
+
     <!-- Full-screen Menu Overlay -->
     <div id="menu-overlay" class="fixed inset-0 bg-[#f4f2ea] z-[90] flex flex-col lg:flex-row overflow-hidden">
-        
+
 
         <!-- Left Pane: Image (Hidden on mobile) -->
         <div class="hidden lg:block lg:w-1/2 h-full relative overflow-hidden">
@@ -78,8 +78,8 @@
                         <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Concept</span>
                         <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
-                    <a href="floor.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
-                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Floor</span>
+                    <a href="gallery.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                        <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Gallery</span>
                         <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
                     <a href="menu.html" class="group flex items-center justify-between border-b border-gray-300 pb-4">
@@ -96,7 +96,7 @@
                         <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">Notice</span>
                         <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between border-b border-gray-300 pb-4">
+                    <a href="https://clubyata.jp/ec/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between border-b border-gray-300 pb-4">
                         <span class="text-[#1a1a1a] text-sm tracking-widest font-serif uppercase">EC</span>
                         <span class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">→</span>
                     </a>
@@ -107,9 +107,7 @@
                 </div>
             </div>
             <div class="mt-16 flex flex-wrap gap-x-8 gap-y-4">
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">資料請求</a>
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">お問い合わせ</a>
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">よくあるご質問</a>
+                <a href="faq.html" class="text-gray-500 text-[10px] tracking-widest border-b border-transparent hover:border-gray-500 transition-colors">よくあるご質問</a>
             </div>
         </div>
     </div>
@@ -124,7 +122,7 @@
     </nav>
     <!-- Hamburger & Order Now (Right) -->
     <nav class="fixed top-0 right-0 z-[100] flex items-center p-5 md:p-8 md:pr-12 md:pt-10 pointer-events-auto">
-        <a href="#" class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-[#856d47]">
+        <a href="https://clubyata.jp/ec/" target="_blank" rel="noopener noreferrer" class="bg-[#b79769] text-white text-[10px] md:text-xs tracking-[0.2em] px-6 py-2.5 uppercase transition-colors duration-300 hover:bg-[#856d47]">
             Order Now
         </a>
         <div class="flex items-center ml-2">
@@ -139,14 +137,6 @@
     </nav>
 
 
-    <!-- Side Follow Us Text -->
-    <div class="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-12 pointer-events-auto vertical-text-container">
-        <span class="vertical-text text-[9px] tracking-[0.5em] uppercase opacity-40">Follow us —</span>
-        <div class="flex flex-col gap-6 opacity-40 text-[9px]">
-            <a href="https://www.instagram.com/clubyata_okayama/" target="_blank" rel="noopener noreferrer" class="hover:text-[#b79769] transition-colors">IG</a>
-            <a href="#" class="hover:text-[#b79769] transition-colors">TW</a>
-        </div>
-    </div>
 
     <!-- Hero Section -->
     <section class="relative h-screen flex flex-col justify-center px-8 md:px-[15%] text-center fade-section">
@@ -164,7 +154,7 @@
                 ウイスキーなどをご用意しております。お客様の好みに合ったご満足いただけるよう<br class="hidden md:block">
                 シンプルながら洗練されたドリンクをご用意しておりますので、どうぞお申し付けください。
             </p>
-            
+
         </div>
 
         <!-- Scroll indicator -->
@@ -208,297 +198,319 @@
             </div>
         </div>
 
-        <!-- Wine List (Image Left, Text Right) -->
-        <section class="relative py-16 md:py-24 fade-section">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div class="w-full md:w-1/2 order-1 transform md:-translate-y-6">
-                    <div class="category-card aspect-[3/4] w-2/3 md:w-3/4 mx-auto md:ml-auto md:mr-0 max-w-[300px]">
-                        <img src="https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover category-img" alt="Wine Corks">
-                        <div class="category-label">
-                            WINE > <span class="glow-dot"></span>
+        <!-- Natural Wine Selection — 赤ワイン -->
+        <section class="relative py-16 md:py-28 fade-section">
+            <div class="text-center mb-20">
+                <p class="text-[9px] tracking-[0.5em] text-[#b79769] uppercase mb-4">八咫 YATA</p>
+                <h3 class="font-serif text-4xl md:text-5xl tracking-[0.15em] text-white">Natural Wine Selection</h3>
+                <p class="font-mincho text-[#b79769] text-lg md:text-xl tracking-[0.1em] mt-4">赤ワイン</p>
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <div class="w-12 h-px bg-white/20"></div>
+                    <div class="w-1 h-1 bg-[#b79769] rounded-full"></div>
+                    <div class="w-12 h-px bg-white/20"></div>
+                </div>
+            </div>
+            <div class="max-w-[700px] mx-auto">
+
+                <!-- Georges Descombes -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Beaujolais</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Georges Descombes <span class="font-mincho text-[11px] text-white/50 ml-1">/ ジョルジュ・デコンブ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">ボジョレーの自然派ワインの聖地モルゴン村に居を構える。ナチュラルワインの父と称される『マルセル・ラピエール』のワインに衝撃を受け醸造家に転身。村で最も標高が高い約400mの区画を所有し、樹齢100年以上の古樹も手掛けます。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Brouilly V V 2020</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">ブルイィ ヴィエイユ・ヴィーニュ</span>
                         </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">コート・ド・ブルイィの丘を正面に望む、日照恵まれた急斜面の区画で完熟したガメイを使用。野生酵母のみ使用。赤いチェリー・フランボワーズ・スミレのアロマが鮮やかに広がり、果実味に深みとリッチな凝縮感が加わっています。瑞々しくも余韻の長い仕上がり。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">12℃〜 ｜ ブルゴーニュグラス ｜ 【ライトミディアムボディ】</span></div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 order-2 text-center md:text-left">
-                    <h3 class="font-mincho text-[13px] md:text-[15px] font-light tracking-[0.1em] text-white">
-                        CLUB YATAで取り扱っているワインリストです
-                    </h3>
-                    <a href="#" class="drink-list-title text-[10px] tracking-[0.3em] uppercase opacity-70 hover:opacity-100 hover:text-[#b79769] hover:border-[#b79769] transition-all">
-                        WINE LIST &gt;
-                    </a>
-                    
-                    <!-- Accordion -->
-                    <div class="mt-8 overflow-hidden w-full md:w-4/5 mx-auto md:mx-0">
-                        <button class="accordion-header flex items-center justify-between w-full py-2 border-b border-white/10 hover:text-[#b79769] transition-colors group">
-                            <span class="text-[9px] tracking-[0.3em] font-sans uppercase">Details</span>
-                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60">
-                                <span class="w-full h-px bg-current absolute transition-transform duration-300"></span>
-                                <span class="w-full h-px bg-current absolute rotate-90 transition-transform duration-300 acc-vertical group-[.active]:rotate-0"></span>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
-                            <div class="pt-4 pb-2 text-white/70 text-[10px] md:text-sm leading-[2.4] tracking-widest font-light break-words w-full px-2">
-                                <span class="text-[#b79769] border-b border-[#b79769]/30 pb-1 mb-2 inline-block">赤 (Red Wine)</span><br>
-                                シャトーラグランジュ<br>
-                                シーラーマルゴー<br>
-                                LLジュヴレシャンベルタン<br>
-                                シャトーカロンセギュール<br>
-                                ルシャンベルダン<br>
-                                オーパスワン<br>
-                                KENZO<br>
-                                ケンゾー エステイト：リンドウ<br>
-                                ケンゾー エステイト：ムラサキ<br>
-                                ケンゾー エステイト：アスカ<br>
-                                ケンゾー エステイト：アサツユ<br>
-                                ケンゾー エステイト：ユイ<br><br>
-                                <span class="text-[#b79769] border-b border-[#b79769]/30 pb-1 mb-2 inline-block">白 (White Wine)</span><br>
-                                ウィリアムフェーブル シャブリ<br>
-                                ウィリアムフェーブル プルミエクリュ ヴァイヨン<br>
-                                LLムルソー<br>
-                                ガヤ アルテ二 ディ ブラッシカ ソーヴィニョンブラン
-                            </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- C & J-Baptiste Sénat -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Languedoc</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">C & J-Baptiste Sénat <span class="font-mincho text-[11px] text-white/50 ml-1">/ シャルロット＆ジャン＝バティストセナ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">ジャンは1995年に妻シャルロットとともに南仏へ移住し、先祖代々の土地で醸造家に転身。初ヴィンテージは1996年。オーガニック農法を徹底。天然酵母・全房発酵で風土をそのままワインに映し出す。夫妻が二人三脚でミネルヴォワ屈指の自然派ドメーヌを築いています。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Le Bois des Merveilles 2019</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">ル･ボワ･デ･メルヴェイユ</span>
                         </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">高樹齢のグルナッシュとカリニャンをブレンド。深みのあるルビー色でブラックチェリー・カシス・スパイスの複雑なアロマが印象的。凝縮した果実味とシルキーなタンニンが見事に調和し、長くリッチな余韻が続きます。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">14℃ ｜ ブルゴーニュグラス ｜ 【ミディアムボディ熟成感】</span></div>
                     </div>
                 </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Château de Bel -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Bordeaux</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Château de Bel <span class="font-mincho text-[11px] text-white/50 ml-1">/ シャトー ド ベル</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">ボルドー地方モンターニュ・サンテミリオンに位置するワイナリー。当主のオリヴィエ・カズナーヴのワインは、パリの三ツ星レストランなどでもオンリストされるほどの評価を得ている。有機栽培を実践し、化学肥料・農薬を使わずに畑を管理。テロワールを最大限に引き出す事を追求したワイン造りを続けている。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Achile Montagne Saint-Émilion 2019</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">アシール･モンターニュ･サンテミリオン</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">クラシックな右岸ボルドーを思わせる一本。穏やかなタンニンと豊かな果実味が魅力で、滑らかな口当たり。赤や黒の果実、クローブのようなスパイス香。2019年は成熟度の高い優良年で、凝縮感と力強さに、しなやかさも備えたバランスの良いワイン。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">14℃前後 ｜ ボルドー型・ブルゴーニュグラス ｜ 【フルボディ】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Stephane Tissot -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Jura</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Stephane Tissot <span class="font-mincho text-[11px] text-white/50 ml-1">/ ステファン･ティソ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">ジュラを代表する自然派の旗手。1990年に家族のドメーヌに参画し、1999年にオーガニックへ全面転換。現在は約50haをデメテール認証のビオディナミで管理。石灰岩・リアス・トリアス粘土と多様な土壌からジュラ土着品種の個性を鮮やかに表現。「La vie est belle！」を口癖に、世界中でジュラのアンバサダーとして活躍する情熱家。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Arbois "D.D." 2023</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">アルボワ デ･デ</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">ジュラ地方の固有品種、プルサール・トゥルソーそして、ピノ・ノワールを等比率で混醸したジュラ赤の入門キュヴェ。フレッシュなチェリー・フランボワーズ・スミレの華やかなアロマ。軽やかでジューシー、石灰由来のようなミネラルと穏やかなタンニンが調和。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">12℃前後 ｜ ブルゴーニュグラス ｜ 【軽やかでありながら奥行きがある】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Château Yvonne (Red) -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Loire</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Château Yvonne <span class="font-mincho text-[11px] text-white/50 ml-1">/ シャトー･イヴォンヌ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">6世紀に修道士によって開かれた歴史あるシャトー。伝説的ドメーヌ「クロ・ルジャール」のフランソワーズ・フコー氏の協力を得て荒廃した畑を見事に蘇らせました。醸造は天然酵母による自然発酵、無清澄・無濾過、SO₂最小限使用と畑と果実への徹底的な不介入主義を貫いています。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Saumur Champigny Le Beaumeray 2021</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">ソーミュール シャンピニール・ボームレ</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">シャトー・イヴォンヌの最高峰キュヴェ。クロ・ルジャールから移植した樹齢60年超のカベルネ・フランを、砂質＆石灰岩質土壌のわずか0.5haの単一区画から醸造。野生のブラックベリー・カシス・スミレ・グラファイトのアロマが繊細に重なり、和らかなタンニンと余韻が印象的。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">14℃前後 ｜ ボルドー型・ブルゴーニュグラス ｜ 【土っぽい熟成感を感じる味わい】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Frédéric Magnien -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Burgundy</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Frédéric Magnien <span class="font-mincho text-[11px] text-white/50 ml-1">/ フレデリック マニャン</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">ブルゴーニュ・モレ＝サン＝ドニを拠点に活躍する造り手。ブルゴーニュ大学で醸造を学んだ後、1995年に自身の名を冠したメゾンを設立。ビオディナミ農法を取り入れ、テロワールの個性を最大限に引き出すスタイルで知られる。グランクリュからヴィラージュまで、数多くのワインをリリースしている。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Gevrey-Chambertin Vieille-Vigne 2022</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">ジュヴレ･シャンベルタン VV</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">赤果実と土の香りが魅力のピノ・ノワール。ブラックベリーやスミレ、スモークの複雑なアロマ、緻密なタンニンが特徴です。ジュヴレらしい力強さと気品を併せ持ち、余韻に黒系果実と土のニュアンスが広がります。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">14℃前後 ｜ ブルゴーニュグラス ｜ 【フルーティー、ミディアムボディ】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
             </div>
         </section>
 
-        <!-- Champagne List (Text Left, Image Right) -->
-        <section class="relative py-16 md:py-24 fade-section">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div class="w-full md:w-1/2 order-2 md:order-1 text-center md:text-right">
-                    <h3 class="font-mincho text-[13px] md:text-[15px] font-light tracking-[0.1em] text-white">
-                        CLUB YATAで取り扱っているシャンパンリストです
-                    </h3>
-                    <a href="#" class="drink-list-title text-[10px] tracking-[0.3em] uppercase opacity-70 hover:opacity-100 hover:text-[#b79769] hover:border-[#b79769] transition-all">
-                        CHAMPAGNE LIST &gt;
-                    </a>
-                    
-                    <!-- Accordion -->
-                    <div class="mt-8 overflow-hidden w-full md:w-4/5 mx-auto md:ml-auto md:mr-0 pl-0 md:pl-2">
-                        <button class="accordion-header flex items-center justify-between w-full py-2 border-b border-white/10 hover:text-[#b79769] transition-colors group">
-                            <span class="text-[9px] tracking-[0.3em] font-sans uppercase">Details</span>
-                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60">
-                                <span class="w-full h-px bg-current absolute transition-transform duration-300"></span>
-                                <span class="w-full h-px bg-current absolute rotate-90 transition-transform duration-300 acc-vertical group-[.active]:rotate-0"></span>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden text-left md:text-right h-0 transition-[height] duration-500 ease-in-out">
-                            <div class="pt-4 pb-2 text-white/70 text-[10px] md:text-sm leading-[2.4] tracking-widest font-light break-words w-full px-2 lg:columns-2 gap-8 text-left md:text-right">
-                                ペリエ・ジェエ・ベルエポック フル<br>
-                                ペリエ・ジェエ・ベルエポック ロゼ<br>
-                                ペリエ・ジェエ・ブラン ド ブラン<br>
-                                ペリエ・ジェエ・ブラゾン ロゼ<br>
-                                クリュグ フル<br>
-                                クリュグ ハーフ<br>
-                                ローランペリエ ブリュット<br>
-                                ローランペリエ ロゼ<br>
-                                ローランペリエ クランシェクル<br>
-                                ローランペリエ アレキサンドラロゼ<br>
-                                ヴーヴ・クリコ フル<br>
-                                ヴーヴ・クリコ ハーフ<br>
-                                ニコラ・フィアット ブルーラベル<br>
-                                ニコラ・フィアット パルムドール<br>
-                                バロン・ド・ロスチャイルド フル<br>
-                                バロン・ド・ロスチャイルド ハーフ<br>
-                                ドンペリ ヴィンテージ(白)<br>
-                                ドンペリ ロゼヴィンテージ<br>
-                                アルマンドブリュット
-                            </div>
+        <!-- Natural Wine Selection — シャンパーニュ・白ワイン -->
+        <section class="relative py-16 md:py-28 fade-section">
+            <div class="text-center mb-20">
+                <p class="text-[9px] tracking-[0.5em] text-[#b79769] uppercase mb-4">八咫 YATA</p>
+                <h3 class="font-serif text-4xl md:text-5xl tracking-[0.15em] text-white">Natural Wine Selection</h3>
+                <p class="font-mincho text-[#b79769] text-lg md:text-xl tracking-[0.1em] mt-4">シャンパーニュ・白ワイン</p>
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <div class="w-12 h-px bg-white/20"></div>
+                    <div class="w-1 h-1 bg-[#b79769] rounded-full"></div>
+                    <div class="w-12 h-px bg-white/20"></div>
+                </div>
+            </div>
+            <div class="max-w-[700px] mx-auto">
+
+                <!-- Champagne Drappier -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Champagne</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Champagne Drappier <span class="font-mincho text-[11px] text-white/50 ml-1">/ シャンパーニュ ドラピエ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">シャンパーニュ地方南部、ウルヴィル村に位置する老舗メゾン「ドラピエ」は1808年創業。ピノ・ノワール主体の力強くも優しく繊細なスタイルで知られ、自然な醸造哲学と環境保全に注力しています。SO₂の使用は極限まで抑えられ、瓶内二次発酵には糖分ではなくメゾンで造ったモストを使用しています。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Brut Nature</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">ブリュット･ナチュール</span>
                         </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">ピノ・ノワール100％の純粋な味わいを追求した1本。リンゴや洋梨、柑橘の香りに、白桃やアプリコットの果実味が広がります。骨格のあるドライな口当たりに、きめ細やかな泡とミネラル感が調和し、余韻までクリーンでエレガントな印象を残します。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">8℃〜 ｜ 大きなグラス</span></div>
+                    </div>
+                    <div class="w-full h-[0.5px] bg-white/10"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Brut Nature Rosé Les Riceys NV</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">ブリュット･ナチュール･ロゼ "レ･リセ"</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">ドサージュゼロで仕上げた辛口のロゼ・シャンパーニュ。ピノ・ノワール由来の深みあるピンク色に、イチゴやラズベリー、バラの花びら、砂糖漬けのチェリーといった華やかで複雑な香りが広がります。赤系果実にグレープフルーツやマンダリンの爽やかさ、ホワイトペッパーのアクセントも感じられます。ピュアでミネラル感のあるフィニッシュが長く続きます。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">8℃ ｜ 大きなグラス</span></div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 order-1 md:order-2 transform md:translate-y-6">
-                    <div class="category-card aspect-[3/4] w-2/3 md:w-3/4 mx-auto md:mr-auto md:ml-0 max-w-[300px]">
-                        <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover category-img" alt="Champagne Glass">
-                        <div class="category-label">
-                            CHAMPAGNE > <span class="glow-dot"></span>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Valentin Zusslin -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Alsace</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Valentin Zusslin <span class="font-mincho text-[11px] text-white/50 ml-1">/ ヴァランタン・チュスラン</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">1691年から続く老舗ドメーヌ。現在はジャン＝ポール・チュスランから引き継いだ妹弟のマリーとジャン＝ミシェルが中心となり運営。1997年よりビオディナミ農法を導入し、自然環境と調和したブドウ栽培を実践。繊細で表現力豊かなワインを生み出しています。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Riesling Chapelle 2022</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">リースリング シャペル</span>
                         </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">複数区画のブドウをブレンド。柑橘や白い花の爽やかな香り、グレープフルーツや白桃の果実味に、塩味を帯びたミネラル感が重なります。しなやかな酸がワイン全体に生命力を与え、清らかで余韻の長い味わいに仕上がっています。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">10℃ ｜ 大きなグラス ｜ 【フレッシュ&フルーティ】</span></div>
                     </div>
                 </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Domaine Tessier -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Loire</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Domaine Tessier <span class="font-mincho text-[11px] text-white/50 ml-1">/ ドメーヌ・テシエ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">ロワール地方のシュヴェルニーで自然と共存するワイン造りを実践する家族経営のドメーヌ。畑はシュヴェルニー城近くの森に囲まれた26haの有機認証地で、生物の多様性を大切にしています。白ワインは、ソーヴィニョン・ブラン主体で、柑橘や白い花のアロマがあり、フレッシュでミネラリーな味わいが魅力です。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Cheverny 2023</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">シュヴェルニー</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">ソーヴィニョン・ブラン&シャルドネのブレンドで、30年以上の樹齢から収穫されたブドウを使用。外観は輝きのある淡いレモンイエロー。グレープフルーツや洋梨、白い花の清らかなアロマが広がり、ほのかに青草やレモングラスの爽やかさが感じられます。シャープで生き生きとした酸が広がり、果実のジューシーさと土壌由来のミネラル感が調和しています。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">8℃ ｜ 白ワイングラス ｜ 【フレッシュ＆ドライ】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Château Yvonne (White) -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Loire</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Château Yvonne <span class="font-mincho text-[11px] text-white/50 ml-1">/ シャトー･イヴォンヌ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">6世紀に修道士によって開かれた歴史あるシャトー。醸造は天然酵母による自然発酵、無清澄・無濾過、SO₂最小限使用と畑と果実への徹底的な不介入主義を貫いています。ロワール・ソーミュールにおいて「最も純粋なワインを醸す造り手」として高い評価を誇ります。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Saumur Blanc Le Gory 2021</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">ソーミュール ブラン "ル ゴリー"</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">最良区画「ラ・コート」内のわずか0.5haの極小区画から生まれる最高峰ワイン。赤粘土・砂岩・石灰岩が混在する複雑な土壌が、シュナン・ブランに深い個性を与えます。年間生産量約1,000本という希少性も際立ちます。青リンゴ・洋梨・柑橘の花・火打石のミネラルが複雑に重なるアロマが魅力です。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">12℃ ｜ ブルゴーニュグラス ｜ 【ボリューム感、スケールの大きい白】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- Nicolas Delfaud -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Burgundy</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">Nicolas Delfaud <span class="font-mincho text-[11px] text-white/50 ml-1">/ ニコラ･デュルフォー</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">マコネ地区に拠点を構えるニコラは、元々パリのレストランでソムリエをしていた。テロワールとブドウの生命力を最大限に引き出すため、有機農法と限りなく介入を抑えた醸造を行う。ワインは優しさに溢れ、芯のある味わいと、ピュアな果実味、ミネラル感が際立つのが特徴です。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Macon Verzé Le Bien Heureux 2022</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">マコン･ヴェルゼ "ル ビヤンウール"</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">『ビヤンウール＝幸せなとき』と名づけられたこのワインは、「シャルドネ×樽」という固定観念を裏切ってくれます。洋梨やカリンを思わせる穏やかで豊かな香りに、優しく広がる果実味と酸、そしてミネラル感が溶け合い、身体にすっと馴染むような味わい。塩味を含んだ清らかな余韻も魅力のひとつ。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">12〜15℃ ｜ ブルゴーニュグラス ｜ 【ミディアムボディ】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
+                <!-- L'Enclos -->
+                <div class="pt-10 pb-2">
+                    <p class="text-[9px] tracking-[0.5em] text-white/30 uppercase mb-2">Burgundy / Chablis</p>
+                    <h4 class="font-serif text-base tracking-widest text-[#b79769] mb-1">L'Enclos <span class="font-mincho text-[11px] text-white/50 ml-1">/ ランクロ</span></h4>
+                    <p class="font-mincho text-white/40 text-[10px] leading-[2.2] tracking-wider mb-5">栽培はエコセール認証のオーガニックを徹底し、一部区画ではビオディナミも導入。テロワールの純粋な表現を最優先としています。醸造では天然酵母による発酵を採用し、過剰なオーク樽の影響を排除。シャブリ本来の透き通った果実味と鋭いミネラル感を体現するスタイルが高く評価されています。</p>
+                    <div class="w-full h-[0.5px] bg-white/15"></div>
+                    <button class="accordion-header flex items-center justify-between w-full py-4 hover:text-[#b79769] transition-colors">
+                        <div class="text-left flex-1 pr-4">
+                            <span class="text-[11px] tracking-[0.25em] uppercase font-serif block">Chablis 1er Cru Beauroy 2022</span>
+                            <span class="font-mincho text-[10px] text-white/40 block mt-0.5">シャブリ･プルミエ･クリュ "ボーロワ"</span>
+                        </div>
+                        <div class="flex items-center gap-4 shrink-0">
+                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60"><span class="w-full h-px bg-current absolute"></span><span class="w-full h-px bg-current absolute rotate-90 acc-vertical"></span></span>
+                        </div>
+                    </button>
+                    <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
+                        <div class="pb-6 text-white/55 text-[10px] md:text-[11px] leading-[2.4] tracking-wide font-mincho px-2 border-t border-white/10 pt-4">シャブリ左岸に位置する「ボーロワ」区画は南東向きの斜面で、樹齢約40年の古樹から生まれる一本。朝の陽光を豊かに浴びることで、熟度とエレガントな緊張感が見事に共存します。熟した黄色系果実・柑橘・白桃・洋梨のアロマが豊かに広がり、明るくキレのある酸と力強いミネラルが調和。<br><span class="text-[#b79769]/70 text-[9px] mt-3 block tracking-[0.3em]">12℃前後〜 ｜ ブルゴーニュグラス ｜ 【ボリューム感、ミネラル感、官能的で長い余韻】</span></div>
+                    </div>
+                </div>
+                <div class="w-full h-[0.5px] bg-white/10"></div>
+
             </div>
         </section>
 
-        <!-- Whisky List (Image Left, Text Right) -->
-        <section class="relative py-16 md:py-24 fade-section">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div class="w-full md:w-1/2 order-1 transform md:-translate-y-6">
-                    <div class="category-card aspect-[3/4] w-2/3 md:w-3/4 mx-auto md:ml-auto md:mr-0 max-w-[300px]">
-                        <img src="https://images.unsplash.com/photo-1527281400683-1aae777175f8?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover category-img" alt="Whisky Glass">
-                        <div class="category-label">
-                            WHISKY > <span class="glow-dot"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 order-2 text-center md:text-left">
-                    <h3 class="font-mincho text-[13px] md:text-[15px] font-light tracking-[0.1em] text-white">
-                        CLUB YATAで取り扱っているウイスキーリストです
-                    </h3>
-                    <a href="#" class="drink-list-title text-[10px] tracking-[0.3em] uppercase opacity-70 hover:opacity-100 hover:text-[#b79769] hover:border-[#b79769] transition-all">
-                        WHISKY LIST &gt;
-                    </a>
-                    
-                    <!-- Accordion -->
-                    <div class="mt-8 overflow-hidden w-full md:w-4/5 mx-auto md:mx-0">
-                        <button class="accordion-header flex items-center justify-between w-full py-2 border-b border-white/10 hover:text-[#b79769] transition-colors group">
-                            <span class="text-[9px] tracking-[0.3em] font-sans uppercase">Details</span>
-                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60">
-                                <span class="w-full h-px bg-current absolute transition-transform duration-300"></span>
-                                <span class="w-full h-px bg-current absolute rotate-90 transition-transform duration-300 acc-vertical group-[.active]:rotate-0"></span>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
-                            <div class="pt-4 pb-2 text-white/70 text-[10px] md:text-sm leading-[2.4] tracking-widest font-light break-words w-full px-2 lg:columns-2 gap-8 text-left md:text-right">
-                                余市<br>
-                                知多<br>
-                                マッカラン 12年<br>
-                                マッカラン 18年<br>
-                                マッカラン<br>
-                                ファインオーク<br>
-                                バランタイン 17年<br>
-                                バランタイン 21年<br>
-                                シーバス 18年<br>
-                                シーバスミズナラ<br>
-                                オールドバー 12年<br>
-                                オールドバー 18年<br>
-                                メーカーズマーク<br>
-                                ジョニーウォーカーブルーラベル
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Natural Wine — What is it? -->
+        <section class="relative py-16 fade-section">
+            <div class="max-w-[700px] mx-auto border border-white/10 p-10 md:p-16">
+                <p class="text-[9px] tracking-[0.5em] text-[#b79769] uppercase mb-4 text-center">Natural Wine</p>
+                <h4 class="font-serif text-2xl tracking-[0.15em] text-white text-center mb-8">ナチュラルワインとは？</h4>
+                <p class="font-mincho text-white/50 text-[10px] md:text-[11px] leading-[2.8] tracking-wider">
+                    ナチュラルワイン（自然派ワイン）は、「ブドウそのものの力」と「人の手を最小限に抑えた醸造」によって造られる、できるだけ自然に近いワインのことです。明確な法律上の定義はありませんが、共通する考え方や哲学があります。<br><br>
+                    まず畑では、有機農法（オーガニック）やビオディナミ（バイオダイナミック）といった農法を用い、化学肥料や除草剤、殺虫剤などを極力使わず、ブドウ畑の活性化を図り、ブドウの生命力を高めます。<br><br>
+                    醸造においては、培養酵母は使わず、ブドウに元々ついている天然酵母で発酵させ、酸化防止剤（SO₂）の使用もごくわずかに抑えます。ナチュラルワインは、土地や年ごとの個性がそのまま表れやすく、味わいにも"生きたような"複雑さや自由さがあります。<br><br>
+                    <span class="text-[#b79769]/70">造り手の人柄や哲学がグラスに映し出される、一期一会のワインです。</span>
+                </p>
             </div>
         </section>
 
-        <!-- Brandy List (Text Left, Image Right) -->
-        <section class="relative py-16 md:py-24 fade-section">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div class="w-full md:w-1/2 order-2 md:order-1 text-center md:text-right">
-                    <h3 class="font-mincho text-[13px] md:text-[15px] font-light tracking-[0.1em] text-white">
-                        CLUB YATAで取り扱っているブランデーリストです
-                    </h3>
-                    <a href="#" class="drink-list-title text-[10px] tracking-[0.3em] uppercase opacity-70 hover:opacity-100 hover:text-[#b79769] hover:border-[#b79769] transition-all">
-                        BRANDY LIST &gt;
-                    </a>
-                    
-                    <!-- Accordion -->
-                    <div class="mt-8 overflow-hidden w-full md:w-4/5 mx-auto md:ml-auto md:mr-0 pl-0 md:pl-2">
-                        <button class="accordion-header flex items-center justify-between w-full py-2 border-b border-white/10 hover:text-[#b79769] transition-colors group">
-                            <span class="text-[9px] tracking-[0.3em] font-sans uppercase">Details</span>
-                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60">
-                                <span class="w-full h-px bg-current absolute transition-transform duration-300"></span>
-                                <span class="w-full h-px bg-current absolute rotate-90 transition-transform duration-300 acc-vertical group-[.active]:rotate-0"></span>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden text-left md:text-right h-0 transition-[height] duration-500 ease-in-out">
-                            <div class="pt-4 pb-2 text-white/70 text-[10px] md:text-sm leading-[2.4] tracking-widest font-light break-words w-full px-2 lg:columns-2 gap-8 text-left md:text-right">
-                                ヘネシー VSOP<br>
-                                ヘネシー XO<br>
-                                ヘネシー パラディ<br>
-                                コルドンブルー<br>
-                                ポールジロー 25年
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 order-1 md:order-2 transform md:translate-y-6">
-                    <div class="category-card aspect-[3/4] w-2/3 md:w-3/4 mx-auto md:mr-auto md:ml-0 max-w-[300px]">
-                        <img src="https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover category-img" alt="Brandy Glass">
-                        <div class="category-label">
-                            BRANDY > <span class="glow-dot"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bourbon List (Image Left, Text Right) -->
-        <section class="relative py-16 md:py-24 fade-section">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div class="w-full md:w-1/2 order-1 transform md:-translate-y-6">
-                    <div class="category-card aspect-[3/4] w-2/3 md:w-3/4 mx-auto md:ml-auto md:mr-0 max-w-[300px]">
-                        <img src="https://images.unsplash.com/photo-1615887023516-986064f26be8?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover category-img" alt="Bourbon Glasses">
-                        <div class="category-label">
-                            BOURBON > <span class="glow-dot"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 order-2 text-center md:text-left">
-                    <h3 class="font-mincho text-[13px] md:text-[15px] font-light tracking-[0.1em] text-white">
-                        CLUB YATAで取り扱っているバーボンリストです
-                    </h3>
-                    <a href="#" class="drink-list-title text-[10px] tracking-[0.3em] uppercase opacity-70 hover:opacity-100 hover:text-[#b79769] hover:border-[#b79769] transition-all">
-                        BOURBON LIST &gt;
-                    </a>
-                    
-                    <!-- Accordion -->
-                    <div class="mt-8 overflow-hidden w-full md:w-4/5 mx-auto md:mx-0">
-                        <button class="accordion-header flex items-center justify-between w-full py-2 border-b border-white/10 hover:text-[#b79769] transition-colors group">
-                            <span class="text-[9px] tracking-[0.3em] font-sans uppercase">Details</span>
-                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60">
-                                <span class="w-full h-px bg-current absolute transition-transform duration-300"></span>
-                                <span class="w-full h-px bg-current absolute rotate-90 transition-transform duration-300 acc-vertical group-[.active]:rotate-0"></span>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden text-left h-0 transition-[height] duration-500 ease-in-out">
-                            <div class="pt-4 pb-2 text-white/70 text-[10px] md:text-sm leading-[2.4] tracking-widest font-light break-words w-full px-2 lg:columns-2 gap-8 text-left md:text-right">
-                                I.Wハーパーゴールド<br>
-                                I.Wハーパー 12年<br>
-                                フォアローゼスプラチナ<br>
-                                ワイルドターキー 8年
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Others List (Text Left, Image Right) -->
-        <section class="relative py-16 md:py-24 fade-section">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <div class="w-full md:w-1/2 order-2 md:order-1 text-center md:text-right">
-                    <h3 class="font-mincho text-[13px] md:text-[15px] font-light tracking-[0.1em] text-white">
-                        CLUB YATAで取り扱っているその他のドリンクのリストです
-                    </h3>
-                    <a href="#" class="drink-list-title text-[10px] tracking-[0.3em] uppercase opacity-70 hover:opacity-100 hover:text-[#b79769] hover:border-[#b79769] transition-all">
-                        OTHERS LIST &gt;
-                    </a>
-                    
-                    <!-- Accordion -->
-                    <div class="mt-8 overflow-hidden w-full md:w-4/5 mx-auto md:ml-auto md:mr-0 pl-0 md:pl-2">
-                        <button class="accordion-header flex items-center justify-between w-full py-2 border-b border-white/10 hover:text-[#b79769] transition-colors group">
-                            <span class="text-[9px] tracking-[0.3em] font-sans uppercase">Details</span>
-                            <span class="relative w-3 h-3 flex items-center justify-center opacity-60">
-                                <span class="w-full h-px bg-current absolute transition-transform duration-300"></span>
-                                <span class="w-full h-px bg-current absolute rotate-90 transition-transform duration-300 acc-vertical group-[.active]:rotate-0"></span>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden text-left md:text-right h-0 transition-[height] duration-500 ease-in-out">
-                            <div class="pt-4 pb-2 text-white/70 text-[10px] md:text-sm leading-[2.4] tracking-widest font-light break-words w-full px-2 lg:columns-2 gap-8 text-left md:text-right">
-                                黒霧島<br>
-                                赤霧島<br>
-                                一刻者<br>
-                                黒甕<br>
-                                神の河<br>
-                                吉四六<br>
-                                いいちこフラスコ<br>
-                                いいちこスペシャル<br><br>
-                                <span class="text-[#b79769] border-b border-[#b79769]/30 pb-1 mb-2 inline-block">ビール、各種ソフトドリンクなど</span><br>
-                                ※詳しくはスタッフまでお尋ねください。
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 order-1 md:order-2 transform md:translate-y-6">
-                    <div class="category-card aspect-[3/4] w-2/3 md:w-3/4 mx-auto md:mr-auto md:ml-0 max-w-[300px]">
-                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover category-img" alt="Other Drinks">
-                        <div class="category-label">
-                            OTHERS > <span class="glow-dot"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
     </div>
 
@@ -516,37 +528,33 @@
                 <p class="text-gray-400 text-sm md:text-base tracking-[0.2em] mb-4">
                     岡山市北区本町 8-15本町プラザ 2F
                 </p>
-                <a href="#" class="text-white text-[10px] md:text-xs tracking-widest border-b border-white/30 pb-1 hover:border-white transition-colors">
+                <a href="https://www.google.com/maps/search/?api=1&query=岡山市北区本町+8-15本町プラザ+2F" target="_blank" rel="noopener noreferrer" class="text-white text-[10px] md:text-xs tracking-widest border-b border-white/30 pb-1 hover:border-white transition-colors">
                     Google Mapを見る
                 </a>
             </div>
 
             <div class="flex justify-center w-full">
                 <div class="flex gap-8 md:gap-12 w-full max-w-3xl">
-                    <div class="hidden md:flex flex-col items-center shrink-0">
-                        <span class="writing-vertical-rl text-[9px] tracking-[0.4em] uppercase text-gray-500 mb-6">Reservation&Contact</span>
-                        <div class="w-[1px] h-full bg-gray-800"></div>
-                    </div>
 
                     <div class="w-full flex flex-col pt-2">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mb-10">
-                            <a href="#" class="bg-[#b79769] text-white text-[11px] tracking-[0.2em] py-4 text-center hover:brightness-110 uppercase">RESERVATION</a>
-                            <a href="#" class="border border-white/30 text-white text-[11px] tracking-[0.2em] py-4 text-center hover:bg-white/5 uppercase">INQUIRY</a>
+                        <div class="flex justify-center mb-10">
+                            <a href="https://www.instagram.com/clubyata_okayama/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 border border-white/20 text-white text-[11px] tracking-[0.2em] px-10 py-4 hover:border-[#b79769] hover:text-[#b79769] transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
                         </div>
 
                         <div class="flex flex-col items-center text-center">
                             <p class="text-gray-500 text-[10px] tracking-widest mb-2 uppercase">For more inquiry contact</p>
-                            <p class="text-white text-2xl md:text-3xl font-serif tracking-widest">000-0000-0000</p>
+                            <a href="tel:0862302080" class="text-white text-2xl md:text-3xl font-sans tracking-widest hover:text-gray-300 transition-colors">086-230-2080</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="w-full mt-24 pt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 border-t border-white/5">
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Company</a>
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Recruit</a>
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Customer Harassment Policy</a>
+                <a href="company.html" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">店舗案内</a>
+                <a href="privacy.html" class="text-gray-500 text-[10px] tracking-widest hover:text-white transition-colors">Privacy Policy</a>
             </div>
         </div>
 
@@ -563,7 +571,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("mobile-menu-btn");
     const menuOverlay = document.getElementById("menu-overlay");
-    
+
 
     if (menuBtn && menuOverlay) {
         function closeMenu() {
@@ -578,11 +586,10 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.style.overflow = menuOverlay.classList.contains("open") ? "hidden" : "";
         });
 
-        
+
     }
 });
 </script>
 
 </body>
 </html>
-
